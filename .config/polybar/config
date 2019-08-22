@@ -60,8 +60,8 @@ font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-5 = "Font Awesome 5 Brands:pixelsize=12;1"
 
 modules-left = i3
-modules-center =
-modules-right = spotify battery temperature date
+modules-center = 
+modules-right = spotify volume battery weather date
 
 tray-position = right
 tray-padding = 2
@@ -87,6 +87,18 @@ interval = 1
 format = <label>
 exec = python ~/.config/polybar/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
+
+[module/weather]
+type = custom/script
+interval = 3600
+exec = python ~/.config/polybar/getWeather.py
+format-underline = #e50050
+
+[module/volume]
+type = custom/script
+interval = 1
+exec = python ~/.config/polybar/getVolume.py
+format-underline = #e60053
 
 [module/i3]
 type = internal/i3
@@ -173,25 +185,6 @@ animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
 
 [settings]
 screenchange-reload = true
