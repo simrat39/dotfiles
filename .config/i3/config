@@ -165,6 +165,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screenshot
+bindsym Print flameshot gui
+
 # >>> Plasma Integration <<<
 
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace
@@ -212,7 +215,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/defau
 exec xset b off
 
 # wallpaper
-exec_always feh --bg-scale ~/.config/walls/wallpaper.jpg
+exec_always feh --bg-scale ~/.config/walls/wallpaper4.jpg
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
