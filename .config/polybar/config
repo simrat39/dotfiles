@@ -61,7 +61,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=12;1"
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = spotify battery weather date
+modules-right = spotify battery weather time date
 
 tray-position = right
 tray-padding = 2
@@ -71,8 +71,8 @@ tray-padding = 2
 
 ;override-redirect = true
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -138,17 +138,20 @@ label-urgent-padding = 2
 type = internal/date
 interval = 5
 
-date = "%d-%m-%Y"
-date-alt = 
+date = "%d %h %Y"
 
-time =
-time-alt =
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = %date% %time%
+label = "%{A1:dde-calendar:}%date%%{A}"
+
+[module/time]
+type = internal/date
+interval = 1
+time = "%I:%M %p"
+
+format-underline = #B19CD9
+
+label = %time%
 
 [module/battery]
 type = internal/battery
