@@ -10,6 +10,6 @@ try:
     for anything in (weather_test).text.split("\xa0"):
         final_weather += anything
 except requests.exceptions.ConnectionError:
-    final_weather = u'\u2715'
+    final_weather = ""
 
 print(final_weather)
