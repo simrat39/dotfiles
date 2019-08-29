@@ -165,8 +165,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Screenshot
-bindsym Print flameshot gui
+bindsym $mod+Print exec flameshot gui
 
 # >>> Plasma Integration <<<
 
@@ -215,7 +214,8 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/defau
 exec xset b off
 
 # wallpaper
-exec_always feh --bg-scale ~/.config/walls/wallpaper4.jpg
+# exec_always --no-startup-id pkill -9 -f back4.sh 
+exec_always --no-startup-id . ~/.config/i3/wall.sh
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -225,3 +225,5 @@ for_window [class=".*"] border pixel 0
 
 # make it fibonacci
 for_window [class=".*"] split toggle
+
+#for_window [class="plasmashell" window_type="notification"] move position 1600 50;
