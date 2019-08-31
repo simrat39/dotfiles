@@ -26,10 +26,6 @@ font pango:monospace 8
 # screen before suspend.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -78,7 +74,6 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -214,8 +209,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/defau
 exec xset b off
 
 # wallpaper
-# exec_always --no-startup-id pkill -9 -f back4.sh 
-exec_always --no-startup-id . ~/.config/i3/wall.sh
+exec_always --no-startup-id feh --bg-scale ~/.config/walls/wall_simple.jpg
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -226,4 +220,4 @@ for_window [class=".*"] border pixel 0
 # make it fibonacci
 for_window [class=".*"] split toggle
 
-#for_window [class="plasmashell" window_type="notification"] move position 1600 50;
+border_radius 12

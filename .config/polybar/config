@@ -18,12 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #65222222
-background-alt = #35000000
+background = #1D1F28
+background-alt = #1D1F28
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #e50050
+primary = #C574DD
 secondary = #e60053
 alert = #bd2c40
 
@@ -43,11 +43,11 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
-border-color = #00000000
+border-size = 8
+border-color = #001D1F28
 
 padding-left = 0
-padding-right = 0
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 2
@@ -82,7 +82,7 @@ type = internal/xwindow
 ;label = %title:0:30:...%
 label = %title%
 format = <label>
-format-underline = #e50050
+format-underline = #C574DD
 
 [module/spotify]
 type = custom/script
