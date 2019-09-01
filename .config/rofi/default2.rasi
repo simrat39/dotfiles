@@ -54,7 +54,7 @@ configuration {
 }
 
 #element selected {
-    background-color: #e50050;
+    background-color: #772dd2;
     text-color: @xfs;
 }
 
