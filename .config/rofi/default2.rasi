@@ -22,7 +22,7 @@ configuration {
     border-radius: 4px;
     padding: 40;
     width: 30%;
-    height: 50%;
+    height: 75%;
 }
 
 #mainbox {
