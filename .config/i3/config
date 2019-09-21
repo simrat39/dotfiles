@@ -209,7 +209,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/defau
 exec xset b off
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.config/walls/wall_simple.jpg
+exec_always --no-startup-id feh --bg-scale ~/Downloads/ClevoWASDMagenta_3840.png
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh

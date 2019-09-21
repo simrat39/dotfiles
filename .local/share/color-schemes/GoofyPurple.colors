@@ -44,10 +44,10 @@ ForegroundActive=252,252,252
 ForegroundInactive=211,218,227
 ForegroundLink=253,188,75
 ForegroundNegative=237,37,78
-ForegroundNeutral=255,106,0
+ForegroundNeutral=255,21,21
 ForegroundNormal=254,254,254
 ForegroundPositive=113,247,159
-ForegroundVisited=189,195,199
+ForegroundVisited=46,0,199
 
 [Colors:Tooltip]
 BackgroundAlternate=47,52,63
