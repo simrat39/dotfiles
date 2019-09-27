@@ -6203,3 +6203,7 @@ ConversationListView {
 #greeter_infobar {
   border-bottom-width: 0;
   font-weight: bold; }
+
+VteTerminal, vte-terminal {
+  padding: 4px;
+  }

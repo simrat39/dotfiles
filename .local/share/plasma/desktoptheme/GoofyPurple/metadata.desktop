@@ -1,18 +1,13 @@
 [Desktop Entry]
-Name=GoofyPurple
-
-X-KDE-PluginInfo-Author=Alexey Varfolomeev
-X-KDE-PluginInfo-Email=varlesh@gmail.com
-X-KDE-PluginInfo-Name=GoofyPurple
-X-KDE-PluginInfo-Version=
-X-KDE-PluginInfo-Website=
-X-KDE-PluginInfo-Category=
-X-KDE-PluginInfo-Depends=
-X-KDE-PluginInfo-License=CCPL:by-sa
+Name=Sweet
+Comment[es]=Un tema oscuro y moderno para Plasma 5
+Comment=A dark and modern theme for Plasma 5
+X-KDE-PluginInfo-Author=EliverLara
+X-KDE-PluginInfo-Email=eliverlara@gmail.com
+X-KDE-PluginInfo-Name=Sweet
+X-KDE-PluginInfo-Version=1.0.0
+X-KDE-PluginInfo-Website=https://github.com/EliverLara/Sweet
+X-KDE-PluginInfo-Category=Plasma Theme
+X-KDE-PluginInfo-License=CC BY-SA 4.0
 X-KDE-PluginInfo-EnabledByDefault=true
-
-[ContrastEffect]
-enabled=false
-contrast=0.2
-intensity=0.4
-saturation=1.7
+X-Plasma-API=5.0
