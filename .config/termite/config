@@ -1,5 +1,5 @@
 [colors]
-background=      #181b28
+background=      rgba(22,25,37,0.6)
 foreground=      #FDFDFD
 cursor=	 #772dd2
 color0=	 #161925
