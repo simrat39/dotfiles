@@ -3,9 +3,10 @@ import subprocess
 def run(command):
     return subprocess.call(command,shell=True)
 
-arch_packages = "i3-gaps rofi termite feh glava python-dbus"
+arch_packages = "i3-gaps rofi termite feh glava python-dbus python-pip"
 arch_deps = "git base-devel"
 aur_packages = ['compton-tryone-git','polybar']
+python_packages = "bs4 requests html5lib"
 config_locat = ['i3','rofi','termite','glava','polybar','compton','wm.sh','appimagelauncher.cfg','walls']
 
 def installArchPackages():
@@ -22,6 +23,10 @@ def installAURPackages():
         run('git clone https://aur.archlinux.org/{} buildhere'.format(package))
         run('cd buildhere && makepkg -si')
         run('cd ~/dotfiles/ && rm -rf buildhere')
+
+def installPythonPackages():
+    print("Installing required python packages")
+    run('sudo pip install {}'.format(python_packages))
 
 def cleanup():
     print("Removing existing configs")
@@ -45,6 +50,7 @@ def install_and_symlink():
 installArchPackages()
 installAURdeps()
 installAURPackages()
+installPythonPackages()
 cleanup()
 install_and_symlink()
 
