@@ -1,10 +1,10 @@
 Credits:
 
-    https://github.com/wangzme/dotfiles - Rofi
+    Rofi --> https://github.com/wangzme/dotfiles
 
-    KDE Color Scheme - Modified Sweet Color Scheme - https://store.kde.org/p/1294011/
+    KDE Color Scheme --> Modified Sweet Color Scheme - https://store.kde.org/p/1294011/
 
-    Plasma Theme - Sweet plasma theme - https://store.kde.org/p/1294174/
+    Plasma Theme --> Sweet plasma theme - https://store.kde.org/p/1294174/
 
 Packages:
 
@@ -14,6 +14,8 @@ Packages:
 | rofi | https://www.archlinux.org/packages/community/x86_64/rofi/ |
 | termite | https://www.archlinux.org/packages/community/x86_64/termite/ |
 | compton-tryone-git | https://aur.archlinux.org/packages/compton-tryone-git/ |
+| zsh | https://www.archlinux.org/packages/extra/x86_64/zsh/ |
+| oh-my-zsh | https://github.com/robbyrussell/oh-my-zsh |
 | feh | https://www.archlinux.org/packages/extra/x86_64/feh/ |
 | polybar | https://aur.archlinux.org/packages/polybar/ |
 | glava | https://www.archlinux.org/packages/community/x86_64/glava/ |
