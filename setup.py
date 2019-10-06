@@ -31,7 +31,6 @@ def cleanup():
 def makeDir():
     print("Making sure directories exist")
     run('mkdir ~/.themes && mkdir ~/.local/share/color-schemes && mkdir ~/.local/share/plasma/desktoptheme')
-    run('glava --copy-config')
     
 def install_and_symlink():
     makeDir()
@@ -40,7 +39,7 @@ def install_and_symlink():
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
 
     print("Installing themes")
-    run('cp -r ~/dotfiles/.themes/* ~/.themes')
+    run('cp -r ~/dotfiles/.themes/* ~/.themes/')
     run('cp -r ~/dotfiles/.local/share/* ~/.local/share/')
 
 installArchPackages()
