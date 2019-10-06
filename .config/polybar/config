@@ -70,8 +70,8 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-;label = %title:0:30:...%
-label = %title%
+label = %title:0:50:...%
+;label = %title%
 format = <label>
 format-underline = #772dd2
 
