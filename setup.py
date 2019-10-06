@@ -4,7 +4,7 @@ def run(command):
     return subprocess.call(command,shell=True)
 
 arch_packages = "i3-gaps rofi termite feh glava python-dbus python-pip"
-arch_deps = "git base-devel"
+arch_deps = "base-devel"
 aur_packages = ['compton-tryone-git','polybar']
 python_packages = "bs4 requests html5lib"
 config_locat = ['i3','rofi','termite','glava','polybar','compton','wm.sh','appimagelauncher.cfg','walls']
