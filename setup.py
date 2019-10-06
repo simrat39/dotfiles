@@ -3,7 +3,7 @@ import subprocess
 def run(command):
     return subprocess.call(command,shell=True)
 
-arch_packages = "i3-gaps rofi termite feh glava python-dbus python-pip"
+arch_packages = "i3-gaps rofi termite feh glava python-dbus python-pip wget"
 arch_deps = "base-devel"
 aur_packages = ['compton-tryone-git','polybar']
 python_packages = "bs4 requests html5lib"
@@ -28,29 +28,47 @@ def installPythonPackages():
     print("Installing required python packages")
     run('sudo pip install {}'.format(python_packages))
 
+def useZsh(n):
+    return True if n == "y" else False
+
+def installZSH():
+    if useZsh:
+        print("Installing oh-my-zsh")
+        run('sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+
 def cleanup():
     print("Removing existing configs")
     for package in config_locat:
         run('rm -rf ~/.config/{}'.format(package))
 
+    if useZsh:
+        run('rm -rf ~/.zshrc')
+
 def makeDir():
     print("Making sure directories exist")
     run('mkdir ~/.themes && mkdir ~/.local/share/color-schemes && mkdir ~/.local/share/plasma/desktoptheme')
-    
+
 def install_and_symlink():
     makeDir()
     print("Symlinking config files")
     for package in config_locat:
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
 
+    if useZsh:
+        print("Symlinking .zshrc")
+        run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
+
     print("Installing themes")
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
     run('cp -r ~/dotfiles/.local/share/* ~/.local/share/')
+
 
 installArchPackages()
 installAURdeps()
 installAURPackages()
 installPythonPackages()
+useZsh(input("Install oh-my-zsh > (y/n)").lower())
+installZSH()
 cleanup()
 install_and_symlink()
 
