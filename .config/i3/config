@@ -179,6 +179,7 @@ for_window [window_type="menu"] floating enable
 # float some apps that break with tiling
 for_window [class="Gcolor3"] floating enable # Gnome color picker
 for_window [class="Wine"] floating enable # Wine ( Photoshop and Illustrator )
+for_window [class="Gnome-calculator"] floating enable # Gnome calculator
 
 # compton
 exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
