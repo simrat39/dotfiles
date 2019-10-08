@@ -54,13 +54,14 @@ def install_and_symlink():
     for package in config_locat:
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
 
-    if useZsh:
-        print("Symlinking .zshrc")
-        run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
-
     print("Installing themes")
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
     run('cp -r ~/dotfiles/.local/share/* ~/.local/share/')
+
+    if useZsh:
+        installZSH()
+        print("Symlinking .zshrc")
+        run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
 
 
 installArchPackages()
@@ -68,7 +69,6 @@ installAURdeps()
 installAURPackages()
 installPythonPackages()
 useZsh(input("Install oh-my-zsh > (y/n)").lower())
-installZSH()
 cleanup()
 install_and_symlink()
 
