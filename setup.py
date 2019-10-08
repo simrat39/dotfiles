@@ -28,21 +28,16 @@ def installPythonPackages():
     print("Installing required python packages")
     run('sudo pip install {}'.format(python_packages))
 
-def useZsh(n):
-    return True if n == "y" else False
-
 def installZSH():
-    if useZsh:
-        print("Installing oh-my-zsh")
-        run('sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+    print("Installing oh-my-zsh")
+    run('sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
 
 def cleanup():
     print("Removing existing configs")
     for package in config_locat:
         run('rm -rf ~/.config/{}'.format(package))
 
-    if useZsh:
-        run('rm -rf ~/.zshrc')
+    run('rm -rf ~/.zshrc')
 
 def makeDir():
     print("Making sure directories exist")
@@ -58,17 +53,15 @@ def install_and_symlink():
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
     run('cp -r ~/dotfiles/.local/share/* ~/.local/share/')
 
-    if useZsh:
-        installZSH()
-        print("Symlinking .zshrc")
-        run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
+    installZSH()
+    print("Symlinking .zshrc")
+    run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
 
 
 installArchPackages()
 installAURdeps()
 installAURPackages()
 installPythonPackages()
-useZsh(input("Install oh-my-zsh > (y/n)").lower())
 cleanup()
 install_and_symlink()
 
