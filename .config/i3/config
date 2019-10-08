@@ -145,8 +145,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Print exec flameshot gui
-
 # >>> Plasma Integration <<<
 
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace
