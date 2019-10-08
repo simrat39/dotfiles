@@ -1,3 +1,11 @@
+Usage:
+
+    sudo pacman -S git python
+    cd ~
+    git clone https://github.com/simrat39/dotfiles.git
+    cd dotfiles
+    python setup.py
+
 Credits:
 
     Rofi --> https://github.com/wangzme/dotfiles
