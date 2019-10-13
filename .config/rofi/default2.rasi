@@ -7,11 +7,10 @@ configuration {
 @import "colors"
 
 * {
-    columns: 1;
+    columns: 3;
     background-color: @xbg;
     border-color: #00000000;
     text-color: @xfg;
-    font: "SF Pro Display 15";
 }
 
 #window {
@@ -21,7 +20,7 @@ configuration {
     border: 0;
     border-radius: 4px;
     padding: 40;
-    width: 30%;
+    width: 70%;
     height: 75%;
 }
 
