@@ -52,7 +52,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = spotify optimus-manager battery weather time date
+modules-right = spotify optimus-manager battery weather time date log-out
 
 tray-position = right
 tray-padding = 2
@@ -143,6 +143,12 @@ time = "%I:%M %p"
 format-underline = #B19CD9
 
 label = %time%
+
+[module/log-out]
+type = custom/script
+format = "%{A1:qdbus org.kde.ksmserver /KSMServer logout 1 3 3:}<label>%{A}"
+exec = echo "log-out"
+format-underline = #fff
 
 [module/optimus-manager]
 type = custom/script
