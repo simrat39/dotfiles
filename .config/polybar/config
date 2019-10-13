@@ -52,7 +52,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = spotify battery weather time date
+modules-right = spotify optimus-manager battery weather time date
 
 tray-position = right
 tray-padding = 2
@@ -143,6 +143,12 @@ time = "%I:%M %p"
 format-underline = #B19CD9
 
 label = %time%
+
+[module/optimus-manager]
+type = custom/script
+format = <label>
+exec = python ~/.config/polybar/optimus-manager.py
+format-underline = #e50050
 
 [module/battery]
 type = internal/battery
