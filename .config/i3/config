@@ -204,4 +204,7 @@ for_window [class=".*"] border pixel 0
 # make it fibonacci
 for_window [class=".*"] split toggle
 
+# plasmashell
+exec --no-startup-id ~/.config/i3/plasmashell.sh
+
 no_focus [class="plasmashell"]
