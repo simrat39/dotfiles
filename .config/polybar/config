@@ -129,11 +129,11 @@ label-urgent-padding = 2
 type = internal/date
 interval = 5
 
-date = "%d %h %Y  "
+date = "%d %h %Y"
 
 format-underline = #0a6cf5
 
-label = "%{A1:dde-calendar:}%date%%{A}"
+label = %date%
 
 [module/time]
 type = internal/date
