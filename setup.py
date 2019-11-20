@@ -60,10 +60,10 @@ def install_and_symlink():
     run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
 
 
-#installArchPackages()
-#installAURdeps()
-#installAURPackages()
-#installPythonPackages()
+installArchPackages()
+installAURdeps()
+installAURPackages()
+installPythonPackages()
 cleanup()
 install_and_symlink()
 
