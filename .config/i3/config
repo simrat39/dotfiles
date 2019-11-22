@@ -205,6 +205,6 @@ for_window [class=".*"] border pixel 0
 for_window [class=".*"] split toggle
 
 # plasmashell
-exec --no-startup-id ~/.config/i3/plasmashell.sh
+for_window [class="plasmashell" window_type="notification"] move position 1600 50;
 
 no_focus [class="plasmashell"]
