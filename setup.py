@@ -3,11 +3,11 @@ import subprocess
 def run(command):
     return subprocess.call(command,shell=True)
 
-arch_packages = "i3-gaps rofi termite feh glava python-dbus python-pip wget"
+arch_packages = "i3-gaps rofi termite feh python-dbus python-pip wget"
 arch_deps = "base-devel"
 aur_packages = ['compton-tryone-git','polybar']
 python_packages = "bs4 requests html5lib"
-config_locat = ['i3','rofi','termite','glava','polybar','compton','wm.sh','appimagelauncher.cfg','walls']
+config_locat = ['i3','rofi','termite','polybar','compton','wm.sh','appimagelauncher.cfg','walls']
 
 def installArchPackages():
     print("Installing packages from arch repositories")

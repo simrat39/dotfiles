@@ -26,7 +26,6 @@ Packages:
 | oh-my-zsh | https://github.com/robbyrussell/oh-my-zsh |
 | feh | https://www.archlinux.org/packages/extra/x86_64/feh/ |
 | polybar | https://aur.archlinux.org/packages/polybar/ |
-| glava | https://www.archlinux.org/packages/community/x86_64/glava/ |
 | python-dbus | https://www.archlinux.org/packages/extra/x86_64/python-dbus/ |
 | requests | https://pypi.org/project/requests/ |
 | html5lib | https://pypi.org/project/html5lib/ |
