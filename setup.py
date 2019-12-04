@@ -36,7 +36,6 @@ def cleanup():
     print("Removing existing configs")
     for package in config_locat:
         run('rm -rf ~/.config/{}'.format(package))
-    run('rm -rf ~/.fonts')
     run('rm -rf ~/.zshrc')
 
 def makeDir():
@@ -48,8 +47,6 @@ def install_and_symlink():
     print("Symlinking config files")
     for package in config_locat:
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
-    print('Symlinking fonts')
-    run('ln -s ~/dotfiles/.fonts ~/.fonts')
 
     print("Installing themes")
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
