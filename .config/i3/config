@@ -178,6 +178,7 @@ for_window [window_type="menu"] floating enable
 for_window [class="Gcolor3"] floating enable # Gnome color picker
 for_window [class="Wine"] floating enable # Wine ( Photoshop and Illustrator )
 for_window [class="Gnome-calculator"] floating enable # Gnome calculator
+for_window [class="plasmawindowed"] floating enable # Plasma Applets
 
 # compton
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
