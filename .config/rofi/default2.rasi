@@ -11,6 +11,7 @@ configuration {
     background-color: @xbg;
     border-color: #00000000;
     text-color: @xfg;
+    font: "Product Sans 13";
 }
 
 #window {
