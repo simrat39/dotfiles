@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# ~/.xprofile
+
+# sourced at boot by ~/.xinitrc and display managers like lightdm
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+[ -d /sbin ] && PATH="$PATH:/sbin"
+[ -d /usr/sbin ] && PATH="$PATH:/usr/sbin"
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+
+# Use i3 as the window manager instead of Kwin 
+export KDEWM=/usr/bin/i3

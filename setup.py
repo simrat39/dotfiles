@@ -7,7 +7,7 @@ arch_packages = "i3-gaps rofi termite feh python-dbus python-pip wget"
 arch_deps = "base-devel"
 aur_packages = ['compton-tryone-git','polybar']
 python_packages = "bs4 requests html5lib"
-config_locat = ['i3','rofi','termite','polybar','compton','wm.sh','bootleggerritpush.sh','appimagelauncher.cfg','walls']
+config_locat = ['i3','rofi','termite','polybar','compton','bootleggerritpush.sh','appimagelauncher.cfg','walls']
 
 def installArchPackages():
     print("Installing packages from arch repositories")
@@ -38,6 +38,7 @@ def cleanup():
         run('rm -rf ~/.config/{}'.format(package))
     run('rm -rf ~/.fonts')
     run('rm -rf ~/.zshrc')
+    run('rm -rf ~/.xprofile')
 
 def makeDir():
     print("Making sure directories exist")
@@ -50,6 +51,7 @@ def install_and_symlink():
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
     print('Symlinking fonts')
     run('ln -s ~/dotfiles/.fonts ~/.fonts')
+    run('ln -s ~/dotfiles/.xprofile ~/.xprofile')
 
     print("Installing themes")
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
