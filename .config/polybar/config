@@ -11,25 +11,18 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #00181B28
 background-alt = #181b28
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #772dd2
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/top]
 width = 100%
-height = 37
-bottom = true
-;offset-x = 3.4%
-;offset-y = 12
+height = 35
 radius = 0
-;fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -37,8 +30,41 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-;border-size = 15
-;border-color = #001D1F28
+padding-left = 3
+padding-right = 3
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = fixed:pixelsize=10;1
+font-1 = Font Awesome 5 Free Regular:style=Regular:pixelsize=9;
+font-2 = Font Awesome 5 Free Solid:style=Solid:pixelsize=9;
+
+modules-left = weather optimus-manager spotify
+modules-center = time date
+modules-right = network brightness volume battery
+
+wm-restack = i3
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+separator = "  /  "
+
+[bar/example]
+width = 100%
+height = 37
+bottom = true
+radius = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
 
 padding-left = 1
 padding-right = 1
@@ -47,20 +73,16 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = spotify optimus-manager battery weather time date log-out
+modules-center =
+modules-right =
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
 wm-restack = i3
-
-;override-redirect = true
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -73,20 +95,39 @@ type = internal/xwindow
 label = %title:0:50:...%
 ;label = %title%
 format = <label>
-format-underline = #772dd2
+format-underline = ${colors.primary}
 
 [module/spotify]
 type = custom/script
 interval = 1
 format = <label>
-exec = python ~/.config/polybar/spotify_status.py -f '{artist}: {song}'
-format-underline = #1db954
+exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
+
+[module/network]
+type = custom/script
+interval = 2
+exec = dash ~/.config/polybar/scripts/network.sh
+format = <label>
+click-left = kickandrun nmtui
+
+[module/brightness]
+type = custom/script
+interval = 1
+exec = brightness --level
+format = <label>
+
+[module/volume]
+type = custom/script
+interval = 1
+exec = volume --status
+format = <label>
+click-left = kickandrun alsamixer
 
 [module/weather]
 type = custom/script
-interval = 3600
-exec = python ~/.config/polybar/getWeather.py
-format-underline = #966fe8
+interval = 86400
+exec = python ~/.config/polybar/scripts/getWeather.py
+format =   <label>
 
 [module/i3]
 type = internal/i3
@@ -94,12 +135,9 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
 label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = #000
+label-mode-foreground = ${colors.primary}
+label-mode-background = #0000000
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
@@ -122,16 +160,11 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
-
 [module/date]
 type = internal/date
 interval = 5
 
 date = "%d %h %Y"
-
-format-underline = #0a6cf5
 
 label = %date%
 
@@ -140,65 +173,23 @@ type = internal/date
 interval = 1
 time = "%I:%M %p"
 
-format-underline = #B19CD9
-
 label = %time%
-
-[module/log-out]
-type = custom/script
-format = "%{A1:qdbus org.kde.ksmserver /KSMServer logout 1 3 3:}<label>%{A}"
-exec = echo "log-out"
-format-underline = #fff
 
 [module/optimus-manager]
 type = custom/script
-format = <label>
-exec = python ~/.config/polybar/optimus-manager.py
-format-underline = #e50050
+format =   <label>
+exec = python ~/.config/polybar/scripts/optimus-manager.py
+interval = 86400
 
 [module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+type = custom/script
+format = <label>
+exec = bash ~/.config/polybar/scripts/bat.sh
+interval = 2
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
-; vim:ft=dosini

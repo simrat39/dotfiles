@@ -1,0 +1,13 @@
+#!/bin/dash
+
+if [ "${1}" = --level ];
+then
+  BRIGHTNESS=$(light | sed 's/\..*//g');
+  echo "  $BRIGHTNESS"%;
+elif [ "${1}" = "--inc" ];
+then
+  light -A ${2};
+elif [ "${1}" = "--dec" ];
+then
+  light -U ${2};
+fi

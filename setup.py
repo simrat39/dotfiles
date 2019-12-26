@@ -7,7 +7,7 @@ arch_packages = "i3-gaps rofi termite feh python-dbus python-pip wget"
 arch_deps = "base-devel"
 aur_packages = ['compton-tryone-git','polybar']
 python_packages = "bs4 requests html5lib"
-config_locat = ['i3','rofi','termite','polybar','compton','bootleggerritpush.sh','appimagelauncher.cfg','walls']
+config_locat = ['i3','rofi','termite','polybar','compton','bootleggerritpush.sh','appimagelauncher.cfg','walls','dunst']
 
 def installArchPackages():
     print("Installing packages from arch repositories")
@@ -38,11 +38,12 @@ def cleanup():
         run('rm -rf ~/.config/{}'.format(package))
     run('rm -rf ~/.fonts')
     run('rm -rf ~/.zshrc')
-    run('rm -rf ~/.xprofile')
+    run('rm -rf ~/.xinitrc')
+    run('rm -rf ~/.bin')
 
 def makeDir():
     print("Making sure directories exist")
-    run('mkdir ~/.themes && mkdir ~/.local/share/color-schemes && mkdir ~/.local/share/plasma/desktoptheme')
+    run('mkdir ~/.themes')
 
 def install_and_symlink():
     makeDir()
@@ -51,22 +52,25 @@ def install_and_symlink():
         run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
     print('Symlinking fonts')
     run('ln -s ~/dotfiles/.fonts ~/.fonts')
-    run('ln -s ~/dotfiles/.xprofile ~/.xprofile')
+
+    run('ln -s ~/dotfiles/.xinitrc ~/.xinitrc')
+    run('ln -s ~/dotfiles/.bin ~/.bin')
 
     print("Installing themes")
     run('cp -r ~/dotfiles/.themes/* ~/.themes/')
-    run('cp -r ~/dotfiles/.local/share/* ~/.local/share/')
 
     installZSH()
     print("Symlinking .zshrc")
     run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
 
 
-installArchPackages()
-installAURdeps()
-installAURPackages()
-installPythonPackages()
+#installArchPackages()
+#installAURdeps()
+#installAURPackages()
+#installPythonPackages()
 cleanup()
 install_and_symlink()
 
 print("Finished! Dont forget to enable your theme and log out")
+
+# usermod -G video simrat39

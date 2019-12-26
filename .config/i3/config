@@ -1,9 +1,13 @@
 set $mod Mod4
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Use amixer to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume --volupdate 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id volume --volupdate 5%-
+bindsym XF86AudioMute exec --no-startup-id volume --volupdate toggle
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec brightness --inc 5
+bindsym XF86MonBrightnessDown exec brightness --dec 5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -128,6 +132,12 @@ for_window [window_role="About"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
+for_window [title="alsamixer"] floating enable resize set 580px 500px;
+for_window [title="alsamixer"] move position 1325 40;
+
+for_window [title="nmtui"] floating enable resize set 580px 500px;
+for_window [title="nmtui"] move position 1325 40;
+
 # float some apps that break with tiling
 for_window [class="Gcolor3"] floating enable # Gnome color picker
 for_window [class="Wine"] floating enable # Wine ( Photoshop and Illustrator )
@@ -150,38 +160,12 @@ exec xset b off
 exec_always --no-startup-id feh --bg-scale ~/.config/walls/space.png
 
 # polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.dash
+
+exec_always --no-startup-id . ~/.config/dunst/launch.sh
 
 # remove border
 for_window [class=".*"] border pixel 0
 
 # make it fibonacci
 for_window [class=".*"] split toggle
-
-##################################################################################################################################
-
-# >>> Plasma Integration <<<
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace
-# and hides everythiing)
-
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-# Avoid tiling popups, dropdown windows from plasma
-
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable
-for_window [class="krunner"] floating enable
-for_window [class="Kmix"] floating enable
-for_window [class="Klipper"] floating enable
-for_window [class="Plasmoidviewer"] floating enable
-for_window [class="plasmawindowed"] floating enable # Plasma Applets
-
-# >>> Window Rules <<<
-
-no_focus [class="plasmashell"]
-
-# plasmashell notification
-for_window [class="plasmashell" window_type="notification"] move position 1550 50;
-
-# >>> Avoid tiling for non-Plasma stuff <<<
