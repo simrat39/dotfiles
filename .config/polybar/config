@@ -106,7 +106,7 @@ exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
 [module/network]
 type = custom/script
 interval = 2
-exec = dash ~/.config/polybar/scripts/network.sh
+exec = dash ~/.config/polybar/scripts/network.dash
 format = <label>
 click-left = kickandrun nmtui
 
@@ -184,7 +184,7 @@ interval = 86400
 [module/battery]
 type = custom/script
 format = <label>
-exec = bash ~/.config/polybar/scripts/bat.sh
+exec = dash ~/.config/polybar/scripts/bat.dash
 interval = 2
 
 [settings]
