@@ -40,7 +40,7 @@ font-0 = fixed:pixelsize=10;1
 font-1 = Font Awesome 5 Free Regular:style=Regular:pixelsize=9;
 font-2 = Font Awesome 5 Free Solid:style=Solid:pixelsize=9;
 
-modules-left = weather optimus-manager spotify
+modules-left = weather spotify
 modules-center = time date
 modules-right = network brightness volume battery
 
@@ -174,12 +174,6 @@ interval = 1
 time = "%I:%M %p"
 
 label = %time%
-
-[module/optimus-manager]
-type = custom/script
-format =   <label>
-exec = python ~/.config/polybar/scripts/optimus-manager.py
-interval = 86400
 
 [module/battery]
 type = custom/script
