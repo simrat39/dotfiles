@@ -100,7 +100,7 @@ format-underline = ${colors.primary}
 [module/spotify]
 type = custom/script
 interval = 1
-format = <label>
+format =    <label>
 exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
 
 [module/network]
