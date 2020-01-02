@@ -2,6 +2,7 @@ configuration {
     display-drun:                   "Apps";
     display-window:                 "Window";
     show-icons:true;
+    terminal:"termite";
 }
 
 @import "colors"
