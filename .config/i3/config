@@ -1,8 +1,8 @@
 set $mod Mod4
 
 # Use amixer to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id volume --volupdate 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id volume --volupdate 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume --volupdate 2%+
+bindsym XF86AudioLowerVolume exec --no-startup-id volume --volupdate 2%-
 bindsym XF86AudioMute exec --no-startup-id volume --volupdate toggle
 
 # Brightness controls
