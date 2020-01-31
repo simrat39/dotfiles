@@ -157,7 +157,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/defau
 exec xset b off
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.config/walls/space.png
+exec_always --no-startup-id feh --bg-scale ~/.config/walls/dracula.png
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.dash

@@ -1,12 +1,44 @@
+# Dracula theme for termite
+# https://github.com/dracula/termite
+# Copyright 2013-present, All rights reserved
+# Code licensed under the MIT license
+
 [colors]
-background=      rgba(22,25,37,0.6)
-foreground=      #FDFDFD
-cursor=	 #772dd2
-color0=	 #161925
-color1=	 #ed254e
-color2=	 #71f79f
-color3=	 #ff6a00
-color4=	 #5294e2
-color5=	 #7cb7ff
-color6=	 #00c1e4
-color7=	 #d3dae3
+
+# special
+foreground      = #f8f8f2
+foreground_bold = #f8f8f2
+cursor          = #f8f8f2
+background      = #282a36
+
+# black
+color0  = #000000
+color8  = #4d4d4d
+
+# red
+color1  = #ff5555
+color9  = #ff6e67
+
+# green
+color2  = #50fa7b
+color10 = #5af78e
+
+# yellow
+color3  = #f1fa8c
+color11 = #f4f99d
+
+# blue
+color4  = #bd93f9
+color12 = #caa9fa
+
+# magenta
+color5  = #ff79c6
+color13 = #ff92d0
+
+# cyan
+color6  = #8be9fd
+color14 = #9aedfe
+
+# white
+color7  = #bfbfbf
+color15 = #e6e6e6
