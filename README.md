@@ -9,10 +9,8 @@ Usage:
 Credits:
 
     Rofi --> https://github.com/wangzme/dotfiles
-
-    KDE Color Scheme --> Modified Sweet Color Scheme - https://store.kde.org/p/1294011/
-
-    Plasma Theme --> Sweet plasma theme - https://store.kde.org/p/1294174/
+    GTK --> Modified version of this https://github.com/EliverLara/Ant-Dracula
+    Termite --> Modified version of this https://github.com/dracula/termite
 
 Packages:
 

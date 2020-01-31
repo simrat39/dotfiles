@@ -40,16 +40,12 @@ def cleanup():
     run('rm -rf ~/.zshrc')
     run('rm -rf ~/.xinitrc')
     run('rm -rf ~/.bin')
-
-def makeDir():
-    print("Making sure directories exist")
-    run('mkdir ~/.themes')
+    run('rm -rf ~/.themes')
 
 def install_and_symlink():
-    makeDir()
     print("Symlinking config files")
     for package in config_locat:
-        run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package,package))
+        run('ln -s ~/dotfiles/.config/{} ~/.config/'.format(package))
     print('Symlinking fonts')
     run('ln -s ~/dotfiles/.fonts ~/.fonts')
 
@@ -57,12 +53,12 @@ def install_and_symlink():
     run('ln -s ~/dotfiles/.bin ~/.bin')
 
     print("Installing themes")
-    run('cp -r ~/dotfiles/.themes/* ~/.themes/')
+    run('ln -s ~/dotfiles/.themes/ ~/.themes')
+    run('ln -s ~/dotfiles/.config/gtk-3.0/gtk.css ~/.config/gtk-3.0/gtk.css')
 
     installZSH()
     print("Symlinking .zshrc")
     run('ln -s ~/dotfiles/.zshrc ~/.zshrc')
-
 
 #installArchPackages()
 #installAURdeps()
