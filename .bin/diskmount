@@ -1,0 +1,26 @@
+#!/bin/dash
+
+DISKTOMOUNT=" "
+
+if [ -z "$1" ]
+    then
+        echo ""
+        lsblk
+        echo ""
+        read -p "Select partition to mount: " DISKTOMOUNT
+else
+    DISKTOMOUNT="$1"
+fi
+
+if [ ! -d "/media/$DISKTOMOUNT" ]
+    then
+        echo "/media/$DISKTOMOUNT does not exist , creating directory"
+        sudo mkdir /media/$DISKTOMOUNT 
+fi
+
+echo "Unmounting /dev/$DISKTOMOUNT"
+sudo umount /dev/$DISKTOMOUNT 1>/dev/null 2>/dev/null
+
+echo "Mounting /dev/$DISKTOMOUNT to /media/$DISKTOMOUNT"
+sudo mount /dev/$DISKTOMOUNT /media/$DISKTOMOUNT 1>/dev/null    
+cd /media/$DISKTOMOUNT
