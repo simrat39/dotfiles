@@ -1,0 +1,62 @@
+#!/usr/bin/env dash
+
+FOLDER1="/home/simrat39/icon-pack/app/src/main/res/drawable-xxxhdpi"
+FOLDER2="/home/simrat39/icon-pack/app/src/main/res/drawable-xxhdpi"
+FOLDER3="/home/simrat39/icon-pack/app/src/main/res/drawable-xhdpi"
+FOLDER4="/home/simrat39/icon-pack/app/src/main/res/drawable-mdpi"
+FOLDER5="/home/simrat39/icon-pack/app/src/main/res/drawable-hdpi"
+
+FOLDER6="/home/simrat39/icon-pack/app/src/main/res/mipmap-xxxhdpi"
+FOLDER7="/home/simrat39/icon-pack/app/src/main/res/mipmap-xxhdpi"
+FOLDER8="/home/simrat39/icon-pack/app/src/main/res/mipmap-xhdpi"
+FOLDER9="/home/simrat39/icon-pack/app/src/main/res/mipmap-mdpi"
+FOLDER10="/home/simrat39/icon-pack/app/src/main/res/mipmap-hdpi"
+
+read -p "Enter image name : " image
+
+cp ${FOLDER1}/${image}.png ${FOLDER2}
+cp ${FOLDER1}/${image}.png ${FOLDER3}
+cp ${FOLDER1}/${image}.png ${FOLDER4}
+cp ${FOLDER1}/${image}.png ${FOLDER5}
+
+cp ${FOLDER6}/${image}_foreground.png ${FOLDER7}
+cp ${FOLDER6}/${image}_background.png ${FOLDER7}
+
+cp ${FOLDER6}/${image}_foreground.png ${FOLDER8}
+cp ${FOLDER6}/${image}_background.png ${FOLDER8}
+
+cp ${FOLDER6}/${image}_foreground.png ${FOLDER9}
+cp ${FOLDER6}/${image}_background.png ${FOLDER9}
+
+cp ${FOLDER6}/${image}_foreground.png ${FOLDER10}
+cp ${FOLDER6}/${image}_background.png ${FOLDER10}
+
+find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 144x144\> \{} \;
+find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 96x96\> \{} \;
+find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 72x72\> \{} \;
+find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 48x48\> \{} \;
+
+find ${FOLDER7} -iname ${image}_background.png -exec convert \{} -verbose -resize 144x144\> \{} \;
+find ${FOLDER8} -iname ${image}_background.png -exec convert \{} -verbose -resize 96x96\> \{} \;
+find ${FOLDER9} -iname ${image}_background.png -exec convert \{} -verbose -resize 72x72\> \{} \;
+find ${FOLDER10} -iname ${image}_background.png -exec convert \{} -verbose -resize 48x48\> \{} \;
+
+height=$(identify $FOLDER6/${image}_foreground.png | grep -P -o '[0-9]{3}x[0-9]{3}\s' | sed 's/ //g' | sed 's/[0-9]*x//')
+width=$(identify $FOLDER6/${image}_foreground.png | grep -P -o '[0-9]{3}x[0-9]{3}\s' | sed 's/ //g' | sed 's/x[0-9]*//')
+
+heightxx_=$(expr $height - $height \* 25 / 100)
+widthxx_=$(expr $width - $width \* 25 / 100)
+
+heightx_=$(expr $height - $height \* 50 / 100)
+widthx_=$(expr $width - $width \* 50 / 100)
+
+heighth=$(expr $height - $height \* 62 / 100) # 62.5
+widthh=$(expr $width - $width \* 62 / 100) # 62.5
+
+heightm=$(expr $height - $height \* 75 / 100)
+widthm=$(expr $width - $width \* 75 / 100)
+
+find ${FOLDER7} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightxx_x$widthxx_\> \{} \;
+find ${FOLDER8} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightx_x$widthx_\> \{} \;
+find ${FOLDER9} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heighthx$widthh\> \{} \;
+find ${FOLDER10} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightmx$widthm\> \{} \;
