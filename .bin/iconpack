@@ -12,6 +12,8 @@ FOLDER8="/home/simrat39/icon-pack/app/src/main/res/mipmap-xhdpi"
 FOLDER9="/home/simrat39/icon-pack/app/src/main/res/mipmap-mdpi"
 FOLDER10="/home/simrat39/icon-pack/app/src/main/res/mipmap-hdpi"
 
+FOLDER11="/home/simrat39/icon-pack/app/src/main/res/drawable-anydpi-v26"
+
 read -p "Enter image name : " image
 
 cp ${FOLDER1}/${image}.png ${FOLDER2}
@@ -31,32 +33,20 @@ cp ${FOLDER6}/${image}_background.png ${FOLDER9}
 cp ${FOLDER6}/${image}_foreground.png ${FOLDER10}
 cp ${FOLDER6}/${image}_background.png ${FOLDER10}
 
-find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 144x144\> \{} \;
-find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 96x96\> \{} \;
-find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 72x72\> \{} \;
-find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 48x48\> \{} \;
+cp -r ${FOLDER11}/reddit.xml ${FOLDER11}/${image}.xml
+sed -i "s/reddit/$image/g" "${FOLDER11}/${image}.xml"
 
-find ${FOLDER7} -iname ${image}_background.png -exec convert \{} -verbose -resize 144x144\> \{} \;
-find ${FOLDER8} -iname ${image}_background.png -exec convert \{} -verbose -resize 96x96\> \{} \;
-find ${FOLDER9} -iname ${image}_background.png -exec convert \{} -verbose -resize 72x72\> \{} \;
-find ${FOLDER10} -iname ${image}_background.png -exec convert \{} -verbose -resize 48x48\> \{} \;
+find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 324x324\> \{} \;
+find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 216x216\> \{} \;
+find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 162x162\> \{} \;
+find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 108x108\> \{} \;
 
-height=$(identify $FOLDER6/${image}_foreground.png | grep -P -o '[0-9]{3}x[0-9]{3}\s' | sed 's/ //g' | sed 's/[0-9]*x//')
-width=$(identify $FOLDER6/${image}_foreground.png | grep -P -o '[0-9]{3}x[0-9]{3}\s' | sed 's/ //g' | sed 's/x[0-9]*//')
+find ${FOLDER7} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 324x324\> \{} \;
+find ${FOLDER8} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 216x216\> \{} \;
+find ${FOLDER9} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 162x162\> \{} \;
+find ${FOLDER10} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 108x108\> \{} \;
 
-heightxx_=$(expr $height - $height \* 25 / 100)
-widthxx_=$(expr $width - $width \* 25 / 100)
-
-heightx_=$(expr $height - $height \* 50 / 100)
-widthx_=$(expr $width - $width \* 50 / 100)
-
-heighth=$(expr $height - $height \* 62 / 100) # 62.5
-widthh=$(expr $width - $width \* 62 / 100) # 62.5
-
-heightm=$(expr $height - $height \* 75 / 100)
-widthm=$(expr $width - $width \* 75 / 100)
-
-find ${FOLDER7} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightxx_x$widthxx_\> \{} \;
-find ${FOLDER8} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightx_x$widthx_\> \{} \;
-find ${FOLDER9} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heighthx$widthh\> \{} \;
-find ${FOLDER10} -iname ${image}_foreground.png -exec convert \{} -verbose -resize $heightmx$widthm\> \{} \;
+find ${FOLDER7} -iname ${image}_background.png -exec convert \{} -verbose -resize 324x324\> \{} \;
+find ${FOLDER8} -iname ${image}_background.png -exec convert \{} -verbose -resize 216x216\> \{} \;
+find ${FOLDER9} -iname ${image}_background.png -exec convert \{} -verbose -resize 162x162\> \{} \;
+find ${FOLDER10} -iname ${image}_background.png -exec convert \{} -verbose -resize 108x108\> \{} \;
