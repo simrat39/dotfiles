@@ -36,10 +36,11 @@ cp ${FOLDER6}/${image}_background.png ${FOLDER10}
 cp -r ${FOLDER11}/reddit.xml ${FOLDER11}/${image}.xml
 sed -i "s/reddit/$image/g" "${FOLDER11}/${image}.xml"
 
-find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 324x324\> \{} \;
-find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 216x216\> \{} \;
-find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 162x162\> \{} \;
-find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 108x108\> \{} \;
+find ${FOLDER1} -iname ${image}.png -exec convert \{} -verbose -resize 192x192\> \{} \;
+find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 144x144\> \{} \;
+find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 96x96\> \{} \;
+find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 72x72\> \{} \;
+find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 48x48\> \{} \;
 
 find ${FOLDER7} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 324x324\> \{} \;
 find ${FOLDER8} -iname ${image}_foreground.png -exec convert \{} -verbose -resize 216x216\> \{} \;
