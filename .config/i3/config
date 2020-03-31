@@ -144,7 +144,7 @@ for_window [class="Wine"] floating enable # Wine ( Photoshop and Illustrator )
 for_window [class="Gnome-calculator"] floating enable # Gnome calculator
 
 # compton
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id compton --config ~/.config/picom/picom.conf
 
 # Set inner/outer gaps
 gaps inner 10

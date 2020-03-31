@@ -1,0 +1,38 @@
+#!/usr/bin/env dash
+
+set -x
+
+#java_bar_id=$(ps -x | grep "java Bar" | head -n 1 | sed 's/[0-9]\s.*//')
+
+#pkill java_bar_id
+killall lemonbar java
+
+BAR_HEIGHT_RATIO=04
+
+#I3_GAP=$(grep -P "gaps\souter\s[0-9]+" ~/.config/i3/config | sed 's/\w*\s//g')
+
+# Find bspwm gap ratio
+BSPWM_GAP=$(awk '/window_gap/{print $4}' $HOME/.config/bspwm/bspwmrc)
+if [ $(echo $BSPWM | wc -l) -gt 1 ]; then BSPWM_GAP=0$BSPWM_GAP; fi
+
+MONITOR_WIDTH=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]\+' | sed -n 1p)
+MONITOR_HEIGHT=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]\+' | sed -n 2p)
+BAR_WIDTH=$(expr $MONITOR_WIDTH - $((BSPWM_GAP * 2)))
+BAR_HEIGHT=$(echo "$MONITOR_HEIGHT * .$BAR_HEIGHT_RATIO" | bc -l | sed 's/\..*//')
+
+# Always compile
+cd ~/dotfiles/javabar
+mvn install
+
+java -jar ~/dotfiles/javabar/target/javabar-1.0-SNAPSHOT-jar-with-dependencies.jar | lemonbar \
+            -o 1 \
+            -f 'fixed:pixelsize=14;1' \
+            -o -2 \
+            -f 'Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=9' \
+            -g "$BAR_WIDTH"x"$BAR_HEIGHT"+"$BSPWM_GAP"+"$((BSPWM_GAP / 2))" \
+            -B '#10000000' \
+            -F "#ffffff" \
+            -U "#ffffff" \
+            -b \
+            -u 2 \
+            -p | dash &

@@ -7,5 +7,4 @@ pkill polybar
 sleep 2
 
 # Launch bar1 and bar2
-polybar example -r &
 polybar top -r &

@@ -1,0 +1,50 @@
+# Terminal emulator
+super + Return
+    termite
+
+# Reload sxhkd config
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Quit / restart bspwm
+super + shift + r
+    bspc wm -r
+
+# Close / kill
+super + shift + q
+    bspc node -k
+
+# Focus / send to the given desktop
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Start dmenu
+super + d
+    rofi -show drun -config ~/.config/rofi/default2.rasi
+
+# Set window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Alternate between tiled / monocle layout
+super + m
+    bspc desktop -l next
+
+# Focus next / previous node in the current desktop
+super + {_,shift + }c
+    bspc node -f {next,prev}.local
+
+# Brightness
+XF86MonBrightness{Up,Down}
+   $HOME/.bin/brightness {--inc,--dec}
+
+# Volume
+XF86Audio{Raise,Lower}Volume
+   $HOME/.bin/volume --volupdate {2%+,2%-}
+
+XF86AudioMute
+   $HOME/.bin/volume toggle
+
+# Focus node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}

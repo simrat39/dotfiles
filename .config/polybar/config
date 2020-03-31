@@ -11,8 +11,8 @@
 ;==========================================================
 
 [colors]
-background = #282a36
-background-alt = #282a36
+background = #10000000
+background-alt = #10000000
 foreground = #f8f8f2
 primary = #bd93f9
 secondary = #bd93f9
@@ -20,12 +20,10 @@ alert = #ff5555
 
 [bar/top]
 width = 100%
-height = 35
+height = 40
 radius = 0
 
-border-top-size = 15
-border-left-size = 15
-border-right-size = 15
+bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -43,9 +41,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = Font Awesome 5 Free Regular:style=Regular:pixelsize=9;
 font-2 = Font Awesome 5 Free Solid:style=Solid:pixelsize=9;
 
-modules-left = weather spotify
-modules-center = time date
-modules-right = network brightness volume battery
+modules-left = date weather spotify
+modules-center = i3
+modules-right = time network brightness volume battery
 
 wm-restack = i3
 
@@ -56,46 +54,6 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 separator = "  /  "
-
-[bar/example]
-width = 100%
-height = 37
-bottom = true
-radius = 0
-
-border-bottom-size = 15
-border-left-size = 15
-border-right-size = 15
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-padding-left = 1
-padding-right = 1
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = fixed:pixelsize=10;1
-
-modules-left = i3 xwindow
-modules-center =
-modules-right =
-
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
-wm-restack = i3
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
