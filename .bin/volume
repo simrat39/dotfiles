@@ -15,5 +15,5 @@ then
 elif test "${1}" = "--volupdate";
 then
   amixer -d sset Master ${2}
-  echo "$VOLUME" > ~/.config/current_volume
+  echo "$VOLUME" > ~/.cache/current_volume
 fi
