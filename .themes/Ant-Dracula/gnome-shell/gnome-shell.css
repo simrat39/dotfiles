@@ -535,7 +535,7 @@ StScrollBar {
 .popup-menu-boxpointer,
 .candidate-popup-boxpointer {
   -arrow-border-radius: 7px;
-  -arrow-background-color: #282a36;
+  -arrow-background-color: #1E1F29;
   -arrow-border-width: 1px;
   -arrow-border-color: #21232d;
   -arrow-base: 24px;
@@ -779,7 +779,7 @@ StScrollBar {
   #panel .screencast-indicator {
     color: #ff9f39; }
   #panel.solid {
-    background-color: #282a36;
+    background-color: #1E1F29;
     /* transition from transparent to solid */
     transition-duration: 300ms; }
     #panel.solid .panel-corner {
@@ -947,7 +947,7 @@ StScrollBar {
   padding: 0.5em 0 0;
   margin: 6px;
   background-color: rgba(195, 199, 209, 0.3);
-  color: #282a36; }
+  color: #1E1F29; }
 
 /* Message list */
 .message-list {
@@ -1040,8 +1040,8 @@ StScrollBar {
   icon-size: 48px !important; }
   .media-message-cover-icon.fallback {
     color: #3e4153;
-    background-color: #282a36;
-    border: 2px solid #282a36;
+    background-color: #1E1F29;
+    border: 2px solid #1E1F29;
     border-radius: 2px;
     icon-size: 16px;
     padding: 8px; }
@@ -1476,7 +1476,7 @@ StScrollBar {
   margin: 5px;
   border-radius: 3px;
   color: #fdfdfd;
-  background-color: #282a36;
+  background-color: #1E1F29;
   border: 1px solid #21232d;
   box-shadow: 0 1px 4px black; }
   .notification-banner:hover {
@@ -1619,7 +1619,7 @@ StScrollBar {
   border: 1px solid #21232d;
   text-shadow: 0 1px black;
   icon-shadow: 0 1px black;
-  background-color: #282a36;
+  background-color: #1E1F29;
   min-height: 2em;
   min-width: 2em;
   font-size: 14pt;

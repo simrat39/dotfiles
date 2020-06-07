@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+rm -rf ~/caf
+
+git clone https://source.codeaurora.org/quic/la/platform/vendor/qcom/falcon_64 -b "$1" ~/caf/falcon_64
+git clone https://source.codeaurora.org/external/gigabyte/device/qcom/common -b "$1" ~/caf/common
+
+cd ~/caf/falcon_64 && git switch -c "$1" && git remote rm origin && git remote add origin https://github.com/simrat39/device_qcom_sdm660_64 && git push origin HEAD:"$1"
+cd ~/caf/common && git switch -c "$1" && git remote rm origin && git remote add origin https://github.com/simrat39/external_gigabyte_device_qcom_common && git push origin HEAD:"$1"

@@ -1,6 +1,6 @@
 # Terminal emulator
 super + Return
-    termite
+    kitty
 
 # Reload sxhkd config
 super + Escape
@@ -12,7 +12,7 @@ super + shift + r
 
 # Close / kill
 super + shift + q
-    bspc node -k
+    bspc node -c
 
 # Focus / send to the given desktop
 super + {_,shift + }{1-9,0}
@@ -22,8 +22,12 @@ super + {_,shift + }{1-9,0}
 super + d
     rofi -show drun -config ~/.config/rofi/default2.rasi
 
+# Start ranger
+super + r
+     termite -e "ranger"
+
 # Set window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,d,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Alternate between tiled / monocle layout
@@ -44,6 +48,9 @@ XF86Audio{Raise,Lower}Volume
 
 XF86AudioMute
    $HOME/.bin/volume toggle
+
+@Print
+    rm -rf /tmp/screenshot.png && notify-send "Taking Screenshot" && scrot -s /tmp/screenshot.png -e 'xclip -selection c -t image/png < $f' && notify-send -i "/tmp/screenshot.png" "Screenshot Taken: /tmp/screenshot.png"
 
 # Focus node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}

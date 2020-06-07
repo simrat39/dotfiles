@@ -2,10 +2,7 @@
 
 set -x
 
-#java_bar_id=$(ps -x | grep "java Bar" | head -n 1 | sed 's/[0-9]\s.*//')
-
-#pkill java_bar_id
-killall lemonbar java
+killall lemonbar a.out
 
 BAR_HEIGHT_RATIO=04
 
@@ -21,18 +18,18 @@ BAR_WIDTH=$(expr $MONITOR_WIDTH - $((BSPWM_GAP * 2)))
 BAR_HEIGHT=$(echo "$MONITOR_HEIGHT * .$BAR_HEIGHT_RATIO" | bc -l | sed 's/\..*//')
 
 # Always compile
-cd ~/dotfiles/javabar
-mvn install
+cd ~/cxxbar
 
-java -jar ~/dotfiles/javabar/target/javabar-1.0-SNAPSHOT-jar-with-dependencies.jar | lemonbar \
-            -o 1 \
-            -f 'fixed:pixelsize=14;1' \
-            -o -2 \
-            -f 'Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=9' \
+./a.out | lemonbar \
+            -o -1 \
+            -f 'fixed:pixelsize=12;1' \
+            -o -3 \
+            -f 'Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=8' \
+            -f 'FiraCode Nerd Font:style=Retina:size=12' \
             -g "$BAR_WIDTH"x"$BAR_HEIGHT"+"$BSPWM_GAP"+"$((BSPWM_GAP / 2))" \
-            -B '#10000000' \
+            -B '#1E1F29' \
             -F "#ffffff" \
             -U "#ffffff" \
             -b \
             -u 2 \
-            -p | dash &
+            -p | dash

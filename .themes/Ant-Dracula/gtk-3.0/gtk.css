@@ -9,7 +9,7 @@
 /* default color scheme */
 @define-color bg_color #1e1f29;
 @define-color fg_color #f8f8f2;
-@define-color base_color #282a36;
+@define-color base_color #1E1F29;
 @define-color text_color #f8f8f2;
 @define-color borders transparent;
 @define-color header_bg_color #1e1f29;
