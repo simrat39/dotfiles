@@ -1,28 +1,41 @@
+fdjkfdjfkdfskfjskdjsjk
 #!/bin/bash
-
-ARCH_PACKAGES="bspwm rofi kitty feh picom nvim ranger base-devel"
+ARCH_PACKAGES="bspwm rofi kitty feh picom neovim ranger base-devel fzf ripgrep"
 DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar"
 DOTHOME="fonts zshrc xinitrc bin themes"
 AUR_PACKAGES="python-ueberzug-git bear"
 
 # Install Arch packages
-sudo pacman -Syu "$ARCH_PACKAGES"
+for package in $ARCH_PACKAGES
+do
+  if ! pacman -Qi "$package" > /dev/null; then
+    sudo pacman -S "$package"
+  fi
+done
 
 # Install AUR stuff
 for pack in $AUR_PACKAGES
 do
-  git clone https://aur.archlinux.org/"$pack" buildhere
-  cd buildhere && makepkg -si
-  cd .. && rm -rf buildhere
-  cd ..
+  if ! pacman -Qi "$pack" > /dev/null; then
+    git clone https://aur.archlinux.org/"$pack" buildhere
+    cd buildhere && makepkg -si
+    cd .. && rm -rf buildhere
+    cd ..
+  fi
 done
 
 # Install lemonbar
+cd ~
 git clone https://github.com/simrat39/bar.git
 cd bar
 make
 sudo make install
 cd .. && rm -rf bar
+
+git clone htpps://github.com/simrat39/cxxbar.git
+cd cxxbar
+make
+cd ../dotfiles
 
 # Cleanup existing things
 for diri in $DOTCONFIG

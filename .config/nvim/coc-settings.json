@@ -1,3 +1,8 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["cpp"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "cpp",
+    "dart",
+    "json",
+    "md"
+  ]
 }

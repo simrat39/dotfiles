@@ -31,4 +31,5 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Git
     Plug 'mhinz/vim-signify'
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()

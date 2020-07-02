@@ -48,8 +48,10 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-autocmd CursorHold * call s:show_documentation()
+nnoremap <silent> <c-space> :call <SID>show_documentation()<CR>
+" autocmd CursorHold * call s:show_documentation()
+
+nnoremap <leader>c :CocList commands<CR>
 
 function! s:show_documentation()
     call CocAction('doHover')
