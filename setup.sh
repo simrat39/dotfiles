@@ -1,8 +1,7 @@
-fdjkfdjfkdfskfjskdjsjk
 #!/bin/bash
 ARCH_PACKAGES="bspwm rofi kitty feh picom neovim ranger base-devel fzf ripgrep"
-DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar"
-DOTHOME="fonts zshrc xinitrc bin themes"
+DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar zsh"
+DOTHOME="fonts xinitrc bin themes zshenv"
 AUR_PACKAGES="python-ueberzug-git bear"
 
 # Install Arch packages
