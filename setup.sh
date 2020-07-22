@@ -1,6 +1,6 @@
 #!/bin/bash
 ARCH_PACKAGES="bspwm rofi kitty feh picom neovim ranger base-devel fzf ripgrep"
-DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar zsh"
+DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar zsh mimeapps.list"
 DOTHOME="fonts xinitrc bin themes zshenv"
 AUR_PACKAGES="python-ueberzug-git bear"
 

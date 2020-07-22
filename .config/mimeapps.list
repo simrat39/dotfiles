@@ -1,0 +1,12 @@
+[Default Applications]
+x-scheme-handler/postman=Postman.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+inode/directory=ranger.desktop
+
+[Added Associations]
+application/pdf=firefox.desktop;
+image/png=org.gnome.eog.desktop;
