@@ -1,7 +1,9 @@
 configuration {
-    display-drun:                   "Apps";
+    display-drun:                   "App: ";
     display-window:                 "Window";
+    display-combi: "Search";
     show-icons:true;
+    sidebar-mode: true;
     terminal:"termite";
 }
 

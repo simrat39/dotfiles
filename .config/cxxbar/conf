@@ -1,19 +1,18 @@
-left=SimpleDate,SimpleTime
-right=Network,battery
+left=SimpleDate,SimpleTime,spotify
+right=volume,Network,battery
 
 padding-left=3
 padding-right=3
-seperator="  //  "
+seperator="  |  "
 
-/* module-sim */
-/* sim-type=Script */
-/* sim-command=python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}' */
-/* sim-sleep=500 */
-/* sim-left-click=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause */
-/* sim-scroll-up=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next */
-/* sim-scroll-down=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous */
-/* sim-underline-color=#1DB954 */
-/* sim-format="  <output>" */
+module-spotify
+spotify-type=Script
+spotify-command=python ~/.config/cxxbar/scripts/spotify_status.py -f '{artist}: {song}'
+spotify-sleep=1000
+spotify-left-click=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+spotify-scroll-up=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+spotify-scroll-down=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+spotify-format="  <output>"
 
 module-battery
 battery-type=Battery
@@ -22,4 +21,10 @@ battery-format-20=" {0}%%"
 battery-format-40=" {0}%%"
 battery-format-60=" {0}%%"
 battery-format-80=" {0}%%"
-battery-format-charging=" {0}%%"
+battery-format-charging=" {0}%% +"
+
+module-volume
+volume-type=Script
+volume-command=volume --status
+volume-sleep=1000
+volume-format="<output>"

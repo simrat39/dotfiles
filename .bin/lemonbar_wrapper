@@ -32,4 +32,4 @@ cd ~/cxxbar
             -U "#ffffff" \
             -b \
             -u 2 \
-            -p | dash
+            -p | dash 

@@ -3,6 +3,11 @@
     "cpp",
     "dart",
     "json",
-    "md"
+    "md",
+    "lua",
+    "snippets"
+  ],
+  "snippets.ultisnips.directories": [
+    "/home/simrat39/.config/nvim/snips"
   ]
 }

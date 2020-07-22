@@ -1,0 +1,51 @@
+# For Loops
+snippet for "For loop" b
+for (int ${1:var} = 0; ${1:var} < $2.length; ${1:var}++) {
+	${3:code}
+}
+endsnippet
+
+# If
+snippet if "If" b
+if (${1:condition}) {
+	${2:code}
+}
+endsnippet
+
+# If Else
+snippet ife "If Else" b
+if (${1:condition}) {
+	${2:code}
+} else {
+	${3:other_code}
+}
+endsnippet
+
+# ============================== Flutter Snippets =============================
+
+# Stateless Widget
+snippet stlw "Stateful Widget" b
+class ${1:widget_name} extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return ${2:Container}();
+	}
+}
+endsnippet
+
+# Stateful Widget
+snippet stfw "Stateful Widget" b
+class ${1:widget_name} extends StatefulWidget {
+	@override
+	State<StatefulWidget> createState() {
+		return _${1}State();
+	}
+}
+
+class _${1}State extends State<${1}> {
+	@override
+		Widget build(BuildContext context) {
+			return ${2:Container}();
+		}
+}
+endsnippet

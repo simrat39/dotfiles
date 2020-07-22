@@ -18,9 +18,13 @@ super + shift + q
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
-# Start dmenu
+# Start rofi for apps
 super + d
-    rofi -show drun -config ~/.config/rofi/default2.rasi
+    rofi -show combi -combi-modi "window,drun" -config ~/.config/rofi/default2.rasi
+
+# Start rofi for calc
+super + w
+    rofi -show calc -modi calc -no-show-match -no-sort
 
 # Set window state
 super + {t,shift + t,s,f}
@@ -36,7 +40,7 @@ super + {_,shift + }c
 
 # Brightness
 XF86MonBrightness{Up,Down}
-   $HOME/.bin/brightness {--inc,--dec}
+   $HOME/.bin/brightness {--inc,--dec} 5
 
 # Volume
 XF86Audio{Raise,Lower}Volume
@@ -50,4 +54,7 @@ XF86AudioMute
 
 # Focus node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}

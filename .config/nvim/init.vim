@@ -11,7 +11,10 @@ source $HOME/.config/nvim/plug-config/signify.vim
 colorscheme dracula
 highlight Pmenu guibg=#000000
 set guifont=FiraCodeNerdFont
+let g:neovide_transparency=1
 let vim_markdown_preview_use_xdg_open=1
+
+let g:UltiSnipsExpandTrigger="0"
 
 function! SmartQuit()
     let num_buffers = len(getbufinfo({'buflisted':1}))
@@ -51,3 +54,4 @@ function! SmartQuit()
 endfunction
 
 nnoremap qq :call SmartQuit()<CR>
+nnoremap <leader>l :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

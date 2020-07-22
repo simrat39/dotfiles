@@ -7,6 +7,9 @@ nnoremap <M-l>    :vertical resize +2<CR>
 " I hate escape more than anything else
 inoremap ii <Esc>
 
+" Escape redraws the screen and removes any search highlighting.
+nnoremap <esc> :noh<return><esc>
+
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>

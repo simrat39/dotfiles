@@ -20,16 +20,17 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
     " Dracula
-    Plug 'darker-dracula/vim', { 'as': 'dracula' }    
+    Plug 'darker-dracula/vim', { 'as': 'dracula' }
     " Searching
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'    
-    " Tags
-    Plug 'ludovicchabant/vim-gutentags', 
+    Plug 'airblade/vim-rooter'
     " COC
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Git
     Plug 'mhinz/vim-signify'
-Plug 'JamshedVesuna/vim-markdown-preview'
+    " REPL
+    Plug 'metakirby5/codi.vim'
+    " Snippets
+    Plug 'SirVer/ultisnips'    
 call plug#end()

@@ -24,10 +24,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias reposync="repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j$(nproc --all)"
 
-alias vim="nvim"
-alias nvim="swallow neovide"
-
-export EDITOR="swallow neovide";
+export EDITOR="nvim";
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
