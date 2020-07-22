@@ -2,3 +2,4 @@
 .config/nvim/autoload
 .config/zsh/.oh*
 .config/zsh/.zsh_history
+.config/zsh/.zcompdump-*
