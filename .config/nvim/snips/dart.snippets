@@ -29,7 +29,7 @@ endsnippet
 # ============================== Flutter Snippets =============================
 
 # Stateless Widget
-snippet stlw "Stateful Widget" b
+snippet statelw "Stateful Widget" b
 class ${1:widget_name} extends StatelessWidget {
 	@override
 	Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ${1:widget_name} extends StatelessWidget {
 endsnippet
 
 # Stateful Widget
-snippet stfw "Stateful Widget" b
+snippet statefw "Stateful Widget" b
 class ${1:widget_name} extends StatefulWidget {
 	@override
 	State<StatefulWidget> createState() {
@@ -53,4 +53,22 @@ class _${1}State extends State<${1}> {
 			return ${2:Container}();
 		}
 }
+endsnippet
+
+snippet initState "initState in StatefulWidget" b
+@override
+void initState() {
+	${1}
+	super.initState();
+}
+
+endsnippet
+
+snippet dispose "dispose in StatefulWidget" b
+@override
+void dispose() {
+	${1}
+	super.dispose();
+}
+
 endsnippet
