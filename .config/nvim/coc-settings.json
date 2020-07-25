@@ -9,5 +9,6 @@
   ],
   "snippets.ultisnips.directories": [
     "/home/simrat39/.config/nvim/snips"
-  ]
+  ],
+  "python.jediEnabled": false
 }

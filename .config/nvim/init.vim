@@ -14,7 +14,7 @@ set guifont=FiraCodeNerdFont
 let g:neovide_transparency=1
 let vim_markdown_preview_use_xdg_open=1
 
-let g:UltiSnipsExpandTrigger="0"
+let g:UltiSnipsExpandTrigger="thisisabruhmomentidontwantthistobemappedtotablol"
 
 function! SmartQuit()
     let num_buffers = len(getbufinfo({'buflisted':1}))
