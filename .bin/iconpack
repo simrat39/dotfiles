@@ -1,18 +1,20 @@
 #!/usr/bin/env dash
 
-FOLDER1="/home/simrat39/icon-pack/app/src/main/res/drawable-xxxhdpi"
-FOLDER2="/home/simrat39/icon-pack/app/src/main/res/drawable-xxhdpi"
-FOLDER3="/home/simrat39/icon-pack/app/src/main/res/drawable-xhdpi"
-FOLDER4="/home/simrat39/icon-pack/app/src/main/res/drawable-mdpi"
-FOLDER5="/home/simrat39/icon-pack/app/src/main/res/drawable-hdpi"
+MAIN_DIR="/home/simrat39/0-icon-pack"
 
-FOLDER6="/home/simrat39/icon-pack/app/src/main/res/mipmap-xxxhdpi"
-FOLDER7="/home/simrat39/icon-pack/app/src/main/res/mipmap-xxhdpi"
-FOLDER8="/home/simrat39/icon-pack/app/src/main/res/mipmap-xhdpi"
-FOLDER9="/home/simrat39/icon-pack/app/src/main/res/mipmap-mdpi"
-FOLDER10="/home/simrat39/icon-pack/app/src/main/res/mipmap-hdpi"
+FOLDER1="$MAIN_DIR/app/src/main/res/drawable-xxxhdpi"
+FOLDER2="$MAIN_DIR/app/src/main/res/drawable-xxhdpi"
+FOLDER3="$MAIN_DIR/app/src/main/res/drawable-xhdpi"
+FOLDER4="$MAIN_DIR/app/src/main/res/drawable-mdpi"
+FOLDER5="$MAIN_DIR/app/src/main/res/drawable-hdpi"
 
-FOLDER11="/home/simrat39/icon-pack/app/src/main/res/drawable-anydpi-v26"
+FOLDER6="$MAIN_DIR/app/src/main/res/mipmap-xxxhdpi"
+FOLDER7="$MAIN_DIR/app/src/main/res/mipmap-xxhdpi"
+FOLDER8="$MAIN_DIR/app/src/main/res/mipmap-xhdpi"
+FOLDER9="$MAIN_DIR/app/src/main/res/mipmap-mdpi"
+FOLDER10="$MAIN_DIR/app/src/main/res/mipmap-hdpi"
+
+FOLDER11="$MAIN_DIR/app/src/main/res/drawable-anydpi-v26"
 
 read -p "Enter image name : " image
 
@@ -54,3 +56,5 @@ find ${FOLDER2} -iname ${image}.png -exec convert \{} -verbose -resize 144x144\>
 find ${FOLDER3} -iname ${image}.png -exec convert \{} -verbose -resize 96x96\> \{} \;
 find ${FOLDER4} -iname ${image}.png -exec convert \{} -verbose -resize 72x72\> \{} \;
 find ${FOLDER5} -iname ${image}.png -exec convert \{} -verbose -resize 48x48\> \{} \;
+
+./gradlew installDebug

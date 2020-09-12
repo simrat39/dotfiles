@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:/usr/local/bin:$PATH
+export PATH=$HOME/.bin:/usr/local/bin:$HOME/.pub-cache/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/simrat39/.config/zsh/.oh-my-zsh"
@@ -26,7 +26,7 @@ alias reposync="repo sync --current-branch --force-sync --no-clone-bundle --no-t
 
 export EDITOR="nvim";
 export TERMINAL="kitty"
-export BROWSER="firefox"
+export BROWSER="brave"
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh

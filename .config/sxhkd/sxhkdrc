@@ -44,7 +44,7 @@ XF86MonBrightness{Up,Down}
 
 # Volume
 XF86Audio{Raise,Lower}Volume
-   $HOME/.bin/volume --volupdate {2%+,2%-}
+   $HOME/.bin/volume --volupdate {+2%,-2%}
 
 XF86AudioMute
    $HOME/.bin/volume toggle

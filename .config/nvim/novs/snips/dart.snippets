@@ -1,0 +1,106 @@
+# For Loops
+snippet for "For loop" b
+for (int ${1:var} = 0; ${1:var} < $2.length; ${1:var}++) {
+	${3:code}
+}
+endsnippet
+
+# If
+snippet if "If" b
+if (${1:condition}) {
+	${2:code}
+}
+endsnippet
+
+# If Else
+snippet ife "If Else" b
+if (${1:condition}) {
+	${2:code}
+} else {
+	${3:other_code}
+}
+endsnippet
+
+# TODO
+snippet todo "Todo Reminder"
+// TODO: ${1:Content} on `date '+%d %b %y'`
+endsnippet
+
+# ============================== Flutter Snippets =============================
+
+# Stateless Widget
+snippet statelw "Stateful Widget" b
+class ${1:widget_name} extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return ${2:Container}();
+	}
+}
+endsnippet
+
+# Stateful Widget
+snippet statefw "Stateful Widget" b
+class ${1:widget_name} extends StatefulWidget {
+	@override
+	State<StatefulWidget> createState() {
+		return _${1}State();
+	}
+}
+
+class _${1}State extends State<${1}> {
+	@override
+		Widget build(BuildContext context) {
+			return ${2:Container}();
+		}
+}
+endsnippet
+
+snippet initState "initState in StatefulWidget" b
+@override
+void initState() {
+	${1}
+	super.initState();
+}
+
+endsnippet
+
+snippet dispose "dispose in StatefulWidget" b
+@override
+void dispose() {
+	${1}
+	super.dispose();
+}
+
+endsnippet
+
+snippet test "unit test" b
+test('${1:Description}', () {
+	${2}
+});
+
+endsnippet
+
+snippet group "group unit test" b
+group('${1: Group Name}', () {
+	test('${2: Test 1 Name}', () {
+		${3}
+	});
+});
+
+endsnippet
+
+snippet customPainter "Custom Painter Class" b
+
+class ${1: Painter} extends CustomPainter {
+	@override
+	void paint(Canvas canvas, Size size) {
+		// TODO: Implement
+	}
+
+	@override
+	bool shouldRepaint(CustomPainter painter) {
+		// TODO: Implement
+		return false;
+	}
+}
+endsnippet

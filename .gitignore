@@ -1,5 +1,7 @@
 */.uuid
 .config/nvim/autoload
+.config/nvim/novs/autoload
+.config/nvim/vs/autoload
 .config/zsh/.oh*
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump-*

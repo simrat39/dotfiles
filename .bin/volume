@@ -1,17 +1,18 @@
 #!/bin/dash
 if test "${1}" = "--status";
 then
-    STATUS=$(amixer get Master | egrep -o -m1 '(\[on\]|\[off\])')
-    VOLUME=$(amixer get Master | egrep -o -m1 '[0-9]*%')
+    STATUS=$(pacmd list-sinks | awk '/muted/ { print $2 }')
+    VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
+    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
-    if test "$STATUS" = "[on]";
+    if test "$STATUS" = "no";
     then
         echo "  $VOLUME";
-    elif test "$STATUS" = "[off]";
+    elif test "$STATUS" = "yes";
     then
         echo "";
     fi
 elif test "${1}" = "--volupdate";
 then
-  amixer -d sset Master ${2}
+  pactl set-sink-volume @DEFAULT_SINK@ "${2}"
 fi
