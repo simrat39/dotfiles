@@ -5,3 +5,4 @@
 .config/zsh/.oh*
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump-*
+.config/ranger/plugins/ranger_devicons
