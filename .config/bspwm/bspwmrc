@@ -6,6 +6,7 @@ pkill picom
 sxhkd &
 
 # . ~/.bin/lemonbar_wrapper &
+. ~/.config/polybar/launch.sh
 
 xset b off
 

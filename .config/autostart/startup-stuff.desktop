@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=StartupStuff
+GenericName=A descriptive name
+Comment=Some description about your script
+Exec=/home/simrat39/.config/autostart/startup.sh
+Terminal=false
+OnlyShowIn=GNOME
+Type=Application
+X-GNOME-Autostart-enabled=true
