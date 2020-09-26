@@ -7,8 +7,10 @@ sxhkd &
 
 XRANDR_RET=$(xrandr -q)
 
-if echo "$XRANDR_RET" | grep "HDMI" 
+if echo "$XRANDR_RET" | grep "HDMI-1-0 disconnected" 
 then
+  export HAS_SECOND_MONITOR='false'
+else
   export HAS_SECOND_MONITOR='true'
   export SECOND_MONITOR='HDMI-1-0'
 fi
@@ -19,8 +21,6 @@ xset b off
 
 # intellij sheit
 wmname LG3D 
-
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 feh --bg-scale ~/.config/walls/wallhaven-2em38y.jpg &
 

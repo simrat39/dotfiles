@@ -1,3 +1,6 @@
+" Global Plugins
+let g:coc_global_extensions = ['coc-flutter-tools', 'coc-snippets']
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
