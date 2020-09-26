@@ -6,3 +6,5 @@
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump-*
 .config/ranger/plugins/ranger_devicons
+.config/ranger/__pycache__
+.config/ranger/plugins/__pycache__

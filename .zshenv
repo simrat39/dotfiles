@@ -3,5 +3,3 @@ export HISTFILE="$ZDOTDIR"/.zsh_history
 export ANDROID_SDK_ROOT=/opt/android-sdk
 export GOPATH=$HOME/.gocache
 export GOPATH=$GOPATH:$HOME/go
-
-xset r rate 300 50

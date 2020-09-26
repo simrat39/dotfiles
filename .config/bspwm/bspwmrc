@@ -1,11 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 pkill sxhkd
 pkill picom
 
 sxhkd &
 
-# . ~/.bin/lemonbar_wrapper &
+XRANDR_RET=$(xrandr -q)
+
+if echo "$XRANDR_RET" | grep "HDMI" 
+then
+  export HAS_SECOND_MONITOR='true'
+  export SECOND_MONITOR='HDMI-1-0'
+fi
+
 . ~/.config/polybar/launch.sh
 
 xset b off
@@ -17,13 +24,17 @@ wmname LG3D
 
 feh --bg-scale ~/.config/walls/wallhaven-2em38y.jpg &
 
-picom --config ~/.config/picom/picom.conf &
+picom &
 
-# bspc monitor HDMI-0 -d 1 2 3 4 5 6
-# bspc monitor eDP-1-1 -d 7 8 9 10
-bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
+if "$HAS_SECOND_MONITOR" = "true"
+then
+  bspc monitor HDMI-1-0 -d 1 2 3 4 5 6
+  bspc monitor eDP-1 -d 7 8 9 10
+  bspc config -m HDMI-1-0 bottom_padding 40
+else
+  bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
+  bspc config -m eDP-1 bottom_padding 40
+fi
 
 bspc config border_width 0
 bspc config window_gap 10
-# bspc config -m HDMI-0 bottom_padding 40
-bspc config -m eDP-1 bottom_padding 40

@@ -1,8 +1,9 @@
 #!/bin/bash
-ARCH_PACKAGES="bspwm rofi kitty feh picom neovim ranger base-devel fzf ripgrep"
+ARCH_PACKAGES="bspwm sxhkd rofi kitty feh picom neovim ranger base-devel dash fzf ripgrep python-pip xclip git"
 DOTCONFIG="bspwm sxhkd rofi kitty nvim walls spicetify cxxbar zsh mimeapps.list ranger polybar autostart"
 DOTHOME="fonts xinitrc bin themes zshenv"
-AUR_PACKAGES="python-ueberzug-git bear"
+AUR_PACKAGES="python-ueberzug-git bear universal-ctags-git"
+PY_PACKAGES="pynvim"
 
 # Install Arch packages
 for package in $ARCH_PACKAGES
@@ -23,18 +24,11 @@ do
   fi
 done
 
-# Install lemonbar
-cd ~
-git clone https://github.com/simrat39/bar.git
-cd bar
-make
-sudo make install
-cd .. && rm -rf bar
-
-git clone htpps://github.com/simrat39/cxxbar.git
-cd cxxbar
-make
-cd ../dotfiles
+# Install Python packages
+for package in $PY_PACKAGES
+do
+  pip install "$package"
+done
 
 # Cleanup existing things
 for diri in $DOTCONFIG
@@ -57,3 +51,8 @@ for diri in $DOTHOME
 do
   ln -s ~/dotfiles/."$diri" ~/."$diri"
 done
+
+# Misc
+
+# Ranger Icons
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons

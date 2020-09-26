@@ -26,11 +26,10 @@ secondary = #6272A4
 alert = #FF5555
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 1910
+monitor = ${env:SECOND_MONITOR:eDP-1}
+width = ${env:BAR_WIDTH}
 height = 35
 offset-x = 0.2%
-;offset-y = 1%
 radius = 8.0
 fixed-center = false
 bottom = true
@@ -74,6 +73,7 @@ cursor-scroll = ns-resize
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = false
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
@@ -96,7 +96,7 @@ label-empty-padding = 2
 
 [module/wlan]
 type = internal/network
-interface = wlp7s0
+interface = wlan0
 interval = 3.0
 
 format-connected = <ramp-signal>  <label-connected>
@@ -209,7 +209,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open =    /
+label-open =    
 label-open-foreground = ${colors.foreground}
 label-close =  Cancel
 label-close-foreground = ${colors.foreground}
