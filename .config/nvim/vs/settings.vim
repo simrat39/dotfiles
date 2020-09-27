@@ -76,7 +76,9 @@ nnoremap <silent> gr :call VSCodeNotify('editor.action.goToReferences')<CR>
 nnoremap <silent> <C-w>_ :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
 
 nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
-" xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
+xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 
 nmap <silent> ge :call VSCodeCall('editor.action.marker.next')<CR>
 nmap <silent> gE :call VSCodeCall('editor.action.marker.prev')<CR>
+
+nmap <silent> / :call VSCodeCall('extension.fuzzyGotoLine')<CR>

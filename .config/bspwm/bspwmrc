@@ -2,6 +2,7 @@
 
 pkill sxhkd
 pkill picom
+pkill gnome-flashback 
 
 sxhkd &
 
@@ -13,7 +14,10 @@ then
 else
   export HAS_SECOND_MONITOR='true'
   export SECOND_MONITOR='HDMI-1-0'
+  xrandr --output HDMI-1-0 --mode 1600x900 --output eDP-1 --right-of HDMI-1-0 --mode 1920x1080
 fi
+
+gnome-flashback &
 
 . ~/.config/polybar/launch.sh
 
@@ -32,9 +36,13 @@ then
   bspc monitor eDP-1 -d 7 8 9 10
   bspc config -m HDMI-1-0 bottom_padding 40
 else
+  bspc monitor HDMI-1-0 --remove
   bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
   bspc config -m eDP-1 bottom_padding 40
 fi
 
 bspc config border_width 0
 bspc config window_gap 10
+
+sleep 1
+xset r rate 300 50
