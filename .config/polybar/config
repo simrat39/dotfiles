@@ -99,11 +99,11 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 
-format-connected = <ramp-signal>  <label-connected>
+format-connected = %{A1: gnome-control-center wifi:}<ramp-signal>  <label-connected>%{A}
 label-connected = %essid%
 
 format-disconnected = <label-disconnected>
-label-disconnected = %ifname% Disconnected
+label-disconnected = %{A1: gnome-control-center wifi:}%ifname% Disconnected%{A}
 label-disconnected-foreground = ${colors.foreground}
 
 ramp-signal-0 = 
@@ -132,7 +132,7 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = "%d %b %Y"
+date = "%a, %d %b %Y"
 
 format =    <label>
 format-prefix-foreground = ${colors.foreground}
@@ -183,9 +183,9 @@ battery = BAT0
 adapter = ADP0
 full-at = 100
 
-format-charging = <animation-charging>  <label-charging>  +
+format-charging = %{A1: gnome-control-center power:}<animation-charging>  <label-charging>  +%{A}
 
-format-discharging = <animation-discharging>  <label-discharging>
+format-discharging = %{A1: gnome-control-center power}<animation-discharging>  <label-discharging>%{A}
 
 format-full-prefix = "  "
 format-full-prefix-foreground = ${colors.foreground}
@@ -233,11 +233,11 @@ menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
+pseudo-transparency = false
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
