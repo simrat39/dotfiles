@@ -83,7 +83,7 @@
       color: transparent;
     }
     widget > .text-button:last-child{
-      color: $selected_bg_color;
+      @include button(active-header, transparent, $purple);
       &:backdrop label{
         color: $backdrop_selected_bg_color;
       }
@@ -95,9 +95,7 @@
         &:hover,
         &:active,
         &:checked {
-          background-color: transparent;
-          color: $backdrop_selected_bg_color;
-          box-shadow: none;
+          @include button(active-header);
           label {
             color: $backdrop_selected_bg_color;
           }
@@ -181,3 +179,20 @@
      border: 0;
      background-color: $bg_color;
  }
+
+ 
+/*********
+ * Gnucash *
+*********/
+#gnc-id-main-window {
+  entry.gnc-class-register-foreground {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  } 
+  .arrow.button.toggle {
+    transition: none;
+    box-shadow: none;
+    &:hover { border-color: $selected_bg_color; }
+  } 
+}

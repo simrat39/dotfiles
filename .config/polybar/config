@@ -17,8 +17,8 @@
 ;==========================================================
 
 [colors]
-background = #1E1F29
-background-alt = #343746
+background = #801E1F29
+background-alt = #80343746
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #BD93F9
@@ -185,7 +185,7 @@ full-at = 100
 
 format-charging = %{A1: gnome-control-center power:}<animation-charging>  <label-charging>  +%{A}
 
-format-discharging = %{A1: gnome-control-center power}<animation-discharging>  <label-discharging>%{A}
+format-discharging = %{A1: gnome-control-center power:}<animation-discharging>  <label-discharging>%{A}
 
 format-full-prefix = "  "
 format-full-prefix-foreground = ${colors.foreground}

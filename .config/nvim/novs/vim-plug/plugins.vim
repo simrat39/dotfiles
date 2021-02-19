@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
     " Dracula
-    Plug 'darker-dracula/vim', { 'as': 'dracula' }
+    Plug 'dracula/vim', { 'as': 'dracula' }
     " Searching
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -34,6 +34,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Snippets
     Plug 'SirVer/ultisnips'
     " Tags
-    Plug 'ludovicchabant/vim-gutentags'
     Plug 'majutsushi/tagbar'
+    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()

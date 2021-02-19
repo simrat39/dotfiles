@@ -2,7 +2,7 @@
 // it gets @if ed depending on $variant
 
 // Main definitions
-$base_color: #1E1F29;
+$base_color: #282a36;
 $text_color: #f8f8f2;
 $bg_color: #1e1f29;
 $fg_color: #f8f8f2;
@@ -12,14 +12,14 @@ $lime: #50fa7a;
 $red: #ff5555;
 $orange: #ffb86c;
 $yellow: #f1fa8c;
-$purple: #ff79c6;
+$purple: #bd93f9;
 $darkpurple: #44475a;
 $cyan: #72BFD0;
 $blue: #13b1d5;
 $slider: #7b7bbd;
 
 $selected_fg_color: #f8f8f2;
-$selected_bg_color: #bd93f9;
+$selected_bg_color: transparentize($purple, 0.5);
 $selected_borders_color: darken($selected_bg_color, 10%);
 $borders_color: if($variant == 'light', transparentize(rgb(156, 156, 156),0.8), transparentize(#191A22, 0.1));
 $borders_edge: if($variant == 'light', transparentize(white, 0.8), transparentize(white, 0.9));
@@ -30,8 +30,8 @@ $bottom_highlight: if($variant == 'light', transparentize(black, 0.8), transpare
 $dark_fill: mix($borders_color, $bg_color, 35%);
 $headerbar_color: $bg_color;
 $headerbar_fg_color: $text_color;
-$menu_color: if($variant == 'light', $base_color, mix($bg_color, $base_color, 20%));
-$popover_bg_color: $base_color;
+$menu_color: if($variant == 'light', $base_color, darken($base_color, 2%));
+$popover_bg_color: darken($base_color, 2%);
 $popover_hover_color: lighten($bg_color, 12%);
 
 $scrollbar_bg_color: mix($base_color, $bg_color, 50%);
@@ -88,7 +88,7 @@ $backdrop_headerbar_bg_color: $headerbar_color;
 $backdrop_headerbar_fg_color: if($variant == 'light', transparentize($headerbar_fg_color, 0.5), transparentize($headerbar_fg_color, 0.2));
 $backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 50%);
 $backdrop_insensitive_color: if($variant == 'light', darken($backdrop_bg_color, 15%), lighten($backdrop_bg_color, 15%));
-$backdrop_selected_bg_color: transparentize($selected_bg_color, 0.4);
+$backdrop_selected_bg_color: transparentize($selected_bg_color, 0.1);
 $backdrop_selected_fg_color: if($variant == 'light', $selected_fg_color, transparentize($selected_fg_color, 0.5));
 $backdrop_borders_color: mix($borders_color, $bg_color, 90%);
 $backdrop_dark_fill: mix($backdrop_borders_color, $backdrop_bg_color, 35%);

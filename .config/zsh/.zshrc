@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 alias reposync="repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j$(nproc --all)"
+alias goodbyeorphans="sudo pacman -Rs $(pacman -Qqtd)"
 
 export EDITOR="nvim";
 export TERMINAL="kitty"

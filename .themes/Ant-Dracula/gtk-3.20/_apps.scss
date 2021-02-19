@@ -7,6 +7,7 @@
 @import 'apps/pantheon';
 @import 'apps/xfce';
 @import 'apps/unity';
+@import 'apps/mate';
 
 /***********************
  * App-Specific Styles *
@@ -14,3 +15,5 @@
 
 @import 'apps/geary';
 @import 'apps/lightdm';
+@import 'apps/thunar';
+@import 'apps/nemo';

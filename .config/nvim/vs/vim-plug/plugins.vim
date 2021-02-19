@@ -9,4 +9,6 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
     " Comment stuff out
     Plug 'tpope/vim-commentary'
+    Plug 'airblade/vim-rooter'
+    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()

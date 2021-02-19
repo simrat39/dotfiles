@@ -2,39 +2,38 @@
 
 pkill sxhkd
 pkill picom
-pkill gnome-flashback 
+pkill gnome-flashback
 
 sxhkd &
 
 XRANDR_RET=$(xrandr -q)
 
-if echo "$XRANDR_RET" | grep "HDMI-1-0 disconnected" 
+if echo "$XRANDR_RET" | grep "HDMI-1-0 disconnected"
 then
+  echo "true"
   export HAS_SECOND_MONITOR='false'
 else
   export HAS_SECOND_MONITOR='true'
   export SECOND_MONITOR='HDMI-1-0'
-  xrandr --output HDMI-1-0 --mode 1600x900 --output eDP-1 --right-of HDMI-1-0 --mode 1920x1080
+  xrandr --output HDMI-1-0 --mode 1600e900 --output eDP-1 --right-of HDMI-1-0
 fi
-
-gnome-flashback &
-
-. ~/.config/polybar/launch.sh
 
 xset b off
 
-# intellij sheit
-wmname LG3D 
+gnome-flashback &
 
 feh --bg-scale ~/.config/walls/wallhaven-2em38y.jpg &
 
-picom &
+. ~/.config/polybar/launch.sh
+
+picom --experimental-backends &
 
 if "$HAS_SECOND_MONITOR" = "true"
 then
   bspc monitor HDMI-1-0 -d 1 2 3 4 5 6
   bspc monitor eDP-1 -d 7 8 9 10
   bspc config -m HDMI-1-0 bottom_padding 40
+  bspc config -m eDP-1 bottom_padding 0
 else
   bspc monitor HDMI-1-0 --remove
   bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
