@@ -4,7 +4,7 @@ configuration {
     display-combi: "Search";
     show-icons:true;
     sidebar-mode: true;
-    terminal:"termite";
+    terminal:"kitty";
 }
 
 @import "colors"
@@ -18,9 +18,9 @@ configuration {
 }
 
 #window {
-/*    fullscreen:true;
-	location:	 west;
-    anchor: west;*/
+    /* fullscreen:true; */
+	/* location:	 west; */
+    /* anchor: west; */
     border: 0;
     border-radius: 4px;
     padding: 40;
@@ -58,7 +58,7 @@ configuration {
 
 #element selected {
     background-color: #bd93f9;
-    text-color: @xfs;
+    text-color: #282a36;
 }
 
 

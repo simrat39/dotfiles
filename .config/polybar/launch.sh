@@ -7,9 +7,9 @@ killall -q polybar
 
 if "$HAS_SECOND_MONITOR" = "true"
 then
-  export BAR_WIDTH="1590"
+  export BAR_WIDTH="1600"
 else
-  export BAR_WIDTH="1910"
+  export BAR_WIDTH="1920"
 fi
 
 # Launch bar1 and bar2

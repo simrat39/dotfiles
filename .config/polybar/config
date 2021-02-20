@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #801E1F29
+background = #80282a36
 background-alt = #80343746
 foreground = #dfdfdf
 foreground-alt = #555
@@ -29,8 +29,6 @@ alert = #FF5555
 monitor = ${env:SECOND_MONITOR:eDP-1}
 width = ${env:BAR_WIDTH}
 height = 35
-offset-x = 0.2%
-radius = 8.0
 fixed-center = false
 bottom = true
 
@@ -38,9 +36,6 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-
-border-size = 5
-border-color = #00000000
 
 padding-left = 0
 padding-right = 1
@@ -59,7 +54,7 @@ modules-right = pulseaudio wlan eth battery date time powermenu
 
 tray-position = right
 tray-padding = 0
-;tray-background = #0063ff
+tray-background = ${colors.background}
 
 wm-restack = bspwm
 
@@ -90,9 +85,6 @@ label-urgent-padding = 2
 label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
 
 [module/wlan]
 type = internal/network
@@ -216,20 +208,27 @@ label-close-foreground = ${colors.foreground}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = Power off
 menu-0-1-exec = menu-open-2
+menu-0-2 = Log Out
+menu-0-2-exec = menu-open-3
 
-menu-1-0 = cancel
+menu-1-0 = Cancel
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1 = Reboot
+menu-1-1-exec = reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
+menu-2-0 = Power Off
+menu-2-0-exec = poweroff
+menu-2-1 = Cancel
 menu-2-1-exec = menu-open-0
+
+menu-3-0 = Log out
+menu-3-0-exec = killall bspwm
+menu-3-1 = Back
+menu-3-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
