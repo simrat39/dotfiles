@@ -12,7 +12,7 @@ nnoremap <esc> :noh<return><esc>
 
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
-nnoremap <c-u> viwU<Esc>
+" nnoremap <c-u> viwU<Esc>
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
@@ -31,3 +31,11 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <Leader>vs :vsplit<CR>
 nnoremap <Leader>cs :split<CR>
+
+" Quickfix lists
+nnoremap <Leader>l :cnext<CR> 
+nnoremap <Leader>h :cprev<CR> 
+
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+inoremap <C-w> <C-\><C-o>dB
+inoremap <C-BS> <C-\><C-o>db

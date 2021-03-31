@@ -8,6 +8,10 @@ source $HOME/.config/nvim/novs/plug-config/searching.vim
 source $HOME/.config/nvim/novs/plug-config/coc.vim
 source $HOME/.config/nvim/novs/plug-config/signify.vim
 
+" lua
+luafile $HOME/.config/nvim/novs/plug-config/tree-sitter-config.lua
+luafile $HOME/.config/nvim/novs/plug-config/bufferline-config.lua
+
 colorscheme dracula
 highlight Pmenu guibg=#000000
 set guifont=FiraCodeNerdFont
@@ -54,4 +58,3 @@ function! SmartQuit()
 endfunction
 
 nnoremap qq :call SmartQuit()<CR>
-nnoremap <leader>l :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

@@ -7,8 +7,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-    " Better Syntax Support
-    Plug 'sheerun/vim-polyglot'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " Airline
@@ -16,11 +14,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Ranger
     Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " Comment stuff out
+    Plug 'akinsho/nvim-bufferline.lua'
     Plug 'tpope/vim-commentary'
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
     " Dracula
     Plug 'dracula/vim', { 'as': 'dracula' }
+    " one dark
+    Plug 'joshdick/onedark.vim' 
     " Searching
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -35,5 +36,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'SirVer/ultisnips'
     " Tags
     Plug 'majutsushi/tagbar'
-    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+    " Discord
+    Plug 'vimsence/vimsence'
+    Plug 'tweekmonster/startuptime.vim'
+    " tree-sitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    " dev-icons
+    Plug 'kyazdani42/nvim-web-devicons'
+    " telescope
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
