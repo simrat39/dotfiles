@@ -9,7 +9,7 @@ set pumheight=20                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
 set ruler              			        " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
-set iskeyword+=-                      	" treat dash separated words as a word text object"
+set iskeyword+=-                      	" treat dash separated words as a word text object
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
@@ -37,8 +37,3 @@ set autochdir                           " Your working directory will always be 
 set termguicolors
 set textwidth=80
 set colorcolumn=80
-
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-
-" You can't stop me
-cmap w!! w !sudo tee %

@@ -11,4 +11,4 @@ let g:airline_right_sep=''
 
 let g:airline_section_z = airline#section#create(['%p%%', ' Col', ':%c'])
 
-let g:airline#extensions#coc#enabled = 1
+" let g:airline#extensions#nvimlsp#enabled = 1

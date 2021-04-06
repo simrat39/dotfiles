@@ -17,6 +17,6 @@
     ],
     "flutter.provider.hot-reload": true,
     "diagnostic.virtualText": true,
-    "diagnostic.messageTarget": "echo",
+    "coc.preferences.diagnostic.locationlist": true,
     "coc.preferences.useQuickfixForLocations": true
 }
