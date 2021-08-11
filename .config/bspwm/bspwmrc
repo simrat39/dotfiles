@@ -4,8 +4,6 @@ pkill sxhkd
 pkill picom
 pkill gnome-flashback
 
-# wmname LG3D
-
 sxhkd &
 
 XRANDR_RET=$(xrandr -q)
@@ -21,12 +19,6 @@ else
 fi
 
 xset b off
-
-gnome-flashback &
-
-feh --bg-scale ~/.config/walls/wallhaven-2em38y.jpg &
-
-# . ~/.config/polybar/launch.sh
 
 picom --experimental-backends &
 
