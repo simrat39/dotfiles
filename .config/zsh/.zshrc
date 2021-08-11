@@ -27,7 +27,7 @@ alias goodbyeorphans="sudo pacman -Rs $(pacman -Qqtd)"
 
 export EDITOR="nvim";
 export TERMINAL="kitty"
-export BROWSER="brave"
+export BROWSER="firefox"
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
