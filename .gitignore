@@ -1,10 +1,8 @@
 */.uuid
-.config/nvim/autoload
-.config/nvim/novs/autoload
-.config/nvim/vs/autoload
+
 .config/zsh/.oh*
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump-*
-.config/ranger/plugins/ranger_devicons
-.config/ranger/__pycache__
-.config/ranger/plugins/__pycache__
+.config/zsh/.zcompdump
+
+.config/nvim/plugin
