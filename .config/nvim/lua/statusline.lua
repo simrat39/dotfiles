@@ -55,7 +55,7 @@ gls.left[2] = {
             return "  "
         end,
         highlight = {colors.statusline_bg, colors.nord_blue},
-        separator = "  ",
+        separator = " ",
         separator_highlight = {colors.nord_blue, colors.lightbg}
     }
 }
@@ -144,21 +144,20 @@ gls.left[10] = {
 gls.right[1] = {
     lsp_status = {
         provider = function()
-            local clients = vim.lsp.get_active_clients()
-            if next(clients) ~= nil then
-                local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-                for _, client in ipairs(clients) do
-                    local filetypes = client.config.filetypes
-                    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                        return " " .. "  " .. " LSP "
-                    end
-                end
-                return ""
-            else
-                return ""
+            local clients = vim.lsp.buf_get_clients(0)
+            local ret = ""
+            for i, value in pairs(clients) do
+               ret = ret .. value.name
+               if i == #clients then
+                  ret = ret .. "   "
+                  else
+                  ret = ret .. " / "
+               end
+
             end
+            return ret
         end,
-        highlight = {colors.grey_fg2, colors.statusline_bg}
+        highlight = {colors.grey_fg2, colors.statusline_bg},
     }
 }
 
@@ -169,8 +168,6 @@ gls.right[2] = {
         end,
         condition = require("galaxyline.condition").check_git_workspace,
         highlight = {colors.grey_fg2, colors.statusline_bg},
-        separator = " ",
-        separator_highlight = {colors.statusline_bg, colors.statusline_bg}
     }
 }
 
