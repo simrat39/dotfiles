@@ -58,9 +58,9 @@ nnoremap('<C-s>', ':RnvimrToggle<CR>')
 -- WhichKey
 nnoremap('<leader>', ':WhichKey \'<Space>\'<CR>', true)
 
--- Com(entary)
-nnoremap('<space>/', ' :Commentary<CR>')
-vnoremap('<space>/', ' :Commentary<CR>')
+-- Comentary
+nnoremap('<space>/', '<cmd>lua require("utils/comment")()<CR>')
+vnoremap('<space>/', '<cmd>lua require("utils/comment")()<CR>')
 
 -- Nvim-Tree
 nnoremap('<C-n>', ':NvimTreeToggle<CR>')
