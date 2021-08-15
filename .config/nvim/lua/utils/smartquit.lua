@@ -1,5 +1,5 @@
 local function smartquit()
-    local buf_nums = #vim.api.nvim_list_bufs()
+    local buf_nums = vim.fn.len(vim.fn.getbufinfo({buflisted = 1}))
 
     if buf_nums == 1 then
         local ok = pcall(vim.cmd, ":silent quit")
