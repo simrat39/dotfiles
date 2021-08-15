@@ -22,6 +22,8 @@ require('packer').startup(function(use)
     use 'folke/trouble.nvim'
     -- Colorizer
     use 'norcalli/nvim-colorizer.lua'
+    -- indent lines
+    use "lukas-reineke/indent-blankline.nvim"
 
     -- =====================
     -- TELESCOPE
@@ -50,6 +52,7 @@ require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/playground'
     use 'windwp/nvim-ts-autotag'
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
     -- Lua dev
     use 'folke/lua-dev.nvim'
     -- flutter
