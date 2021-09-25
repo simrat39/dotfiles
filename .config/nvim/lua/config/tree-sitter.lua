@@ -1,6 +1,7 @@
 require('nvim-treesitter')
 
 require'nvim-treesitter.configs'.setup {
+    ts_funky_keywords = {enable = true},
     highlight = {
         enable = true,
         custom_captures = {

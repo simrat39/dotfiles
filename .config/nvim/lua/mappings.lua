@@ -81,6 +81,8 @@ nnoremap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', true)
 nnoremap('gr', '<cmd>LspTrouble lsp_references<CR>', true)
 nnoremap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', true)
 nnoremap('<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', true)
+vnoremap('<C-space>', '<cmd>RustHoverRange<CR>')
+
 nnoremap('ge', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', true)
 nnoremap('gE', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', true)
 nnoremap('<silent><leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', true)

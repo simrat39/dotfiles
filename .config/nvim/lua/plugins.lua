@@ -86,6 +86,7 @@ require('packer').startup(function(use)
     -- Pairs ()
     use 'windwp/nvim-autopairs'
     -- Startify (Dashboard thingy)
+    -- use 'glepnir/dashboard-nvim'
     use 'mhinz/vim-startify'
     -- Which key
     use 'liuchengxu/vim-which-key'

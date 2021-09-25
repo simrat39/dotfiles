@@ -8,6 +8,9 @@ setup_auto_format("js")
 setup_auto_format("css")
 setup_auto_format("tsx")
 setup_auto_format("svelte")
+setup_auto_format("ts")
+setup_auto_format("py")
+setup_auto_format("dart")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -15,6 +18,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -----------------------
 -- Webdev
 -----------------------
+require("null-ls").config {}
+require("lspconfig")["null-ls"].setup {}
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = function(client)
@@ -36,6 +41,9 @@ lspconfig.tsserver.setup {
                 buffer_content = 3, -- loaded buffer content
                 local_files = 2, -- git files or files with relative path markers
                 same_file = 1, -- add to existing import statement
+                b = {
+                    noooooo=10,
+                }
             },
             import_all_scan_buffers = 100,
             import_all_select_source = false,
@@ -49,7 +57,7 @@ lspconfig.tsserver.setup {
             eslint_show_rule_id = false,
 
             -- formatting
-            enable_formatting = false,
+            enable_formatting = true,
             formatter = "prettier",
             formatter_config_fallback = nil,
 
@@ -78,6 +86,9 @@ lspconfig.html.setup {capabilities = capabilities}
 lspconfig.tailwindcss.setup {}
 lspconfig.svelte.setup {capabilities = capabilities}
 
+lspconfig.clangd.setup{}
+lspconfig.pylsp.setup{}
+
 -----------------------
 -- Lua
 -----------------------
@@ -86,5 +97,5 @@ local luadev = require("lua-dev").setup({
 })
 require'lspconfig'.sumneko_lua.setup(luadev)
 
-vim.lsp.handlers['textDocument/codeAction'] =
-    require'lsputil.codeAction'.code_action_handler
+-- vim.lsp.handlers['textDocument/codeAction'] =
+--     require'lsputil.codeAction'.code_action_handler
