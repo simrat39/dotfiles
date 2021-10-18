@@ -1,13 +1,16 @@
 -----------------------
 -- Rust
 -----------------------
-require'rust-tools'.setup({
-    server = {settings = {["rust-analyzer"] = {checkOnSave = {enable = true}}}}
+require("rust-tools").setup({
+	dap = {
+		adapter = require("rust-tools.dap").get_codelldb_adapter(
+			"/home/simrat39/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/adapter/codelldb",
+			"/home/simrat39/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/lldb/lib/liblldb.so"
+		),
+	},
+	server = {
+		on_attach = function()
+			vim.cmd([[au BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]])
+		end,
+	},
 })
--- require'lspconfig'.rust_analyzer.setup {
---     on_attach = function(arg1, arg2)
---         print("on attach called")
---         print(arg1)
---         print(arg2)
---     end
--- }
