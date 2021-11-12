@@ -155,6 +155,9 @@ local components = {
 				enabled = git_provider.git_info_exists,
 				provider = function()
 					local changed, icon = git_provider.git_diff_changed()
+					if changed == "" then
+						changed = 0
+					end
 					return string.format("%s%s", icon, changed)
 				end,
 			},
@@ -170,7 +173,7 @@ local components = {
 				provider = function()
 					local added, icon = git_provider.git_diff_added()
 					if added == "" then
-						return ""
+						added = 0
 					end
 					return string.format("%s%s", icon, added)
 				end,
@@ -193,7 +196,7 @@ local components = {
 				provider = function()
 					local removed, icon = git_provider.git_diff_removed()
 					if removed == "" then
-						return ""
+						removed = 0
 					end
 					return string.format("%s%s ", icon, removed)
 				end,
@@ -316,6 +319,8 @@ vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
 vim.cmd(string.format("hi NvimTreeStatusLine guibg=%s guifg=%s", dracula.background, dracula.background))
 vim.cmd(string.format("hi NvimTreeStatusLineNC guibg=%s", dracula.background))
 
+local disabled = { "NvimTree", "Outline" }
+
 R("feline").setup({
 	components = components,
 	colors = {
@@ -328,4 +333,7 @@ R("feline").setup({
 		violet = dracula.violet,
 		yellow = dracula.yellow,
 	},
+	force_inactive = { filetypes = disabled },
 })
+
+require("floatline").setup({ bg = "StatusLineNC" })

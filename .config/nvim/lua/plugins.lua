@@ -24,6 +24,7 @@ require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	-- statusline
 	use("famiu/feline.nvim")
+	use("~/dev/plugins/floatline.nvim")
 
 	-- =====================
 	-- TELESCOPE
