@@ -24,7 +24,9 @@ require("desktop-notify").override_vim_notify()
 require("null-ls").config({})
 require("lspconfig")["null-ls"].setup({})
 lspconfig.tsserver.setup({
+	cmd = { "typescript-language-server", "--stdio" },
 	capabilities = capabilities,
+	init_options = require("nvim-lsp-ts-utils").init_options,
 	on_attach = function(client)
 		-- disable tsserver formatting if you plan on formatting via null-ls
 		client.resolved_capabilities.document_formatting = false
@@ -44,9 +46,6 @@ lspconfig.tsserver.setup({
 				buffer_content = 3, -- loaded buffer content
 				local_files = 2, -- git files or files with relative path markers
 				same_file = 1, -- add to existing import statement
-				b = {
-					noooooo = 10,
-				},
 			},
 			import_all_scan_buffers = 100,
 			import_all_select_source = false,
@@ -65,8 +64,8 @@ lspconfig.tsserver.setup({
 			formatter_config_fallback = nil,
 
 			-- update imports on file move
-			update_imports_on_move = false,
-			require_confirmation_on_move = false,
+			update_imports_on_move = true,
+			require_confirmation_on_move = true,
 			watch_dir = nil,
 		})
 

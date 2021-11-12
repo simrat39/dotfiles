@@ -1,243 +1,331 @@
-local present1, gl = pcall(require, "galaxyline")
-local present2, condition = pcall(require, "galaxyline.condition")
-if not (present1 or present2) then
-	return
-end
+local vi_mode_provider = require("feline.providers.vi_mode")
+local git_provider = require("feline.providers.git")
+local lsp_provider = require("feline.providers.lsp")
 
-local gls = gl.section
-
-gl.short_line_list = { " " }
-
-local colors = {
-	white = "#F8F8F2",
-	darker_black = "#232531",
-	black = "#282A36", --  nvim bg
-	black2 = "#303341",
-	one_bg = "#373844", -- real bg of onedark
-	one_bg2 = "#44475a",
-	one_bg3 = "#565761",
-	grey = "#41434f",
-	grey_fg = "#5a5c68",
-	grey_fg2 = "#5a5c68",
-	light_grey = "#636571",
-	red = "#FF5555",
-	baby_pink = "#DE8C92",
-	pink = "#FF79C6",
-	line = "#373844", -- for lines like vertsplit
-	green = "#50FA7B",
-	vibrant_green = "#69FF94",
-	nord_blue = "#b389ef",
-	blue = "#BD93F9",
-	yellow = "#F1FA8C",
-	sun = "#FFFFA5",
-	purple = "#BD93F9",
-	dark_purple = "#BD93F9",
-	teal = "#0088cc",
-	orange = "#FFB86C",
-	cyan = "#8BE9FD",
-	statusline_bg = "#2b2d39",
-	lightbg = "#343642",
-	lightbg2 = "#2f313d",
+local dracula = {
+	background = "#1E1F29",
+	current_line = "#282a36",
+	selection = "#282a36",
+	foreground = "#f8f8f2",
+	comment = "#6272a4",
+	cyan = "#8be9fd",
+	green = "#50fa7b",
+	orange = "#ffb86c",
+	pink = "#ff79c6",
+	purple = "#bd93f9",
+	red = "#ff5555",
+	yellow = "#f1fa8c",
 }
 
-gls.left[1] = {
-	FirstElement = {
-		provider = function()
-			return "▋"
-		end,
-		highlight = { colors.nord_blue, colors.nord_blue },
+local components = {
+	inactive = {},
+	active = {
+		-- left
+		-- vi mode
+		{
+			{
+				provider = function()
+					return " " .. vi_mode_provider.get_vim_mode() .. " "
+				end,
+				left_sep = {
+					str = "",
+					hl = function()
+						return {
+							name = vi_mode_provider.get_mode_highlight_name(),
+							fg = dracula.selection,
+						}
+					end,
+				},
+				right_sep = {
+					str = "",
+					hl = function()
+						return {
+							name = vi_mode_provider.get_mode_highlight_name(),
+							fg = dracula.selection,
+						}
+					end,
+				},
+				hl = function()
+					return {
+						fg = vi_mode_provider.get_mode_color(),
+						bg = dracula.selection,
+						style = "bold",
+					}
+				end,
+			},
+
+			-- folder name
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.yellow,
+					style = "bold",
+				},
+				provider = function()
+					local name = vim.fn.getcwd()
+					return string.format(" %s %s ", "", vim.fn.fnamemodify(name, ":t"))
+				end,
+			},
+
+			-- file name
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.red,
+					style = "bold",
+				},
+				enabled = function()
+					local name = vim.api.nvim_buf_get_name(0)
+					return name and name ~= ""
+				end,
+				provider = function()
+					local name = vim.api.nvim_buf_get_name(0)
+					local ext = vim.fn.fnamemodify(name, ":e")
+					local icon_str = require("nvim-web-devicons").get_icon_color(name, ext, { default = true })
+					return string.format(" %s %s ", icon_str, vim.fn.fnamemodify(name, ":t"))
+				end,
+			},
+		},
+
+		-- middle
+		{
+			-- git branch
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.pink,
+					style = "bold",
+				},
+				enabled = git_provider.git_info_exists,
+				provider = function()
+					local branch, icon = git_provider.git_branch()
+					return string.format(" %s%s ", icon, branch)
+				end,
+			},
+
+			-- git changed
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.cyan,
+					style = "bold",
+				},
+				enabled = git_provider.git_info_exists,
+				provider = function()
+					local changed, icon = git_provider.git_diff_changed()
+					return string.format("%s%s", icon, changed)
+				end,
+			},
+
+			-- git added
+			{
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.green,
+					style = "bold",
+				},
+				enabled = git_provider.git_info_exists,
+				provider = function()
+					local added, icon = git_provider.git_diff_added()
+					if added == "" then
+						return ""
+					end
+					return string.format("%s%s", icon, added)
+				end,
+			},
+
+			-- git removed
+			{
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.orange,
+					style = "bold",
+				},
+				enabled = git_provider.git_info_exists,
+				provider = function()
+					local removed, icon = git_provider.git_diff_removed()
+					if removed == "" then
+						return ""
+					end
+					return string.format("%s%s ", icon, removed)
+				end,
+			},
+		},
+
+		-- right
+		{
+
+			-- lsp errors
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.red,
+					style = "bold",
+				},
+				enabled = lsp_provider.is_lsp_attached,
+				provider = function()
+					local errors, icon = lsp_provider.diagnostic_errors()
+					if errors == "" then
+						errors = "0"
+					end
+					return string.format("%s%s", icon, errors)
+				end,
+			},
+
+			-- lsp warnings
+			{
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.orange,
+					style = "bold",
+				},
+				enabled = lsp_provider.is_lsp_attached,
+				provider = function()
+					local warnings, icon = lsp_provider.diagnostic_warnings()
+					if warnings == "" then
+						warnings = "0"
+					end
+					return string.format("%s%s", icon, warnings)
+				end,
+			},
+
+			-- lsp info
+			{
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.foreground,
+					style = "bold",
+				},
+				enabled = lsp_provider.is_lsp_attached,
+				provider = function()
+					local info, icon = lsp_provider.diagnostic_info()
+					if info == "" then
+						info = "0"
+					end
+					return string.format("%s%s", icon, info)
+				end,
+			},
+
+			-- lsp hints
+			{
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.cyan,
+					style = "bold",
+				},
+				enabled = lsp_provider.is_lsp_attached,
+				provider = function()
+					local hints, icon = lsp_provider.diagnostic_hints()
+					if hints == "" then
+						hints = "0"
+					end
+					return string.format("%s%s ", icon, hints)
+				end,
+			},
+
+			-- language server names
+			{
+				left_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				right_sep = {
+					str = "",
+					hl = {
+						fg = dracula.selection,
+					},
+				},
+				hl = {
+					bg = dracula.selection,
+					fg = dracula.foreground,
+					style = "bold",
+				},
+				enabled = lsp_provider.is_lsp_attached,
+				provider = function()
+					local names, icon = lsp_provider.lsp_client_names()
+					return string.format(" %s%s ", icon, names)
+				end,
+			},
+		},
 	},
 }
 
-gls.left[2] = {
-	statusIcon = {
-		provider = function()
-			return "  "
-		end,
-		highlight = { colors.statusline_bg, colors.nord_blue },
-		separator = " ",
-		separator_highlight = { colors.nord_blue, colors.lightbg },
+vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
+vim.cmd(string.format("hi NvimTreeStatusLine guibg=%s guifg=%s", dracula.background, dracula.background))
+vim.cmd(string.format("hi NvimTreeStatusLineNC guibg=%s", dracula.background))
+
+R("feline").setup({
+	components = components,
+	colors = {
+		fg = dracula.foreground,
+		cyan = dracula.cyan,
+		green = dracula.green,
+		orange = dracula.orange,
+		red = dracula.red,
+		magenta = dracula.pink,
+		violet = dracula.violet,
+		yellow = dracula.yellow,
 	},
-}
-
-gls.left[3] = {
-	FileIcon = {
-		provider = "FileIcon",
-		condition = condition.buffer_not_empty,
-		highlight = { colors.white, colors.lightbg },
-	},
-}
-
-gls.left[4] = {
-	FileName = {
-		provider = { "FileName" },
-		condition = condition.buffer_not_empty,
-		highlight = { colors.white, colors.lightbg },
-		separator = " ",
-		separator_highlight = { colors.lightbg, colors.lightbg2 },
-	},
-}
-
-gls.left[5] = {
-	current_dir = {
-		provider = function()
-			local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-			return "  " .. dir_name .. " "
-		end,
-		highlight = { colors.grey_fg2, colors.lightbg2 },
-		separator = " ",
-		separator_highlight = { colors.lightbg2, colors.statusline_bg },
-	},
-}
-
-local checkwidth = function()
-	local squeeze_width = vim.fn.winwidth(0) / 2
-	if squeeze_width > 30 then
-		return true
-	end
-	return false
-end
-
-gls.left[6] = {
-	DiffAdd = {
-		provider = "DiffAdd",
-		condition = checkwidth,
-		icon = "  ",
-		highlight = { colors.white, colors.statusline_bg },
-	},
-}
-
-gls.left[7] = {
-	DiffModified = {
-		provider = "DiffModified",
-		condition = checkwidth,
-		icon = "   ",
-		highlight = { colors.grey_fg2, colors.statusline_bg },
-	},
-}
-
-gls.left[8] = {
-	DiffRemove = {
-		provider = "DiffRemove",
-		condition = checkwidth,
-		icon = "  ",
-		highlight = { colors.grey_fg2, colors.statusline_bg },
-	},
-}
-
-gls.left[9] = {
-	DiagnosticError = {
-		provider = "DiagnosticError",
-		icon = "  ",
-		highlight = { colors.red, colors.statusline_bg },
-	},
-}
-
-gls.left[10] = {
-	DiagnosticWarn = {
-		provider = "DiagnosticWarn",
-		icon = "  ",
-		highlight = { colors.yellow, colors.statusline_bg },
-	},
-}
-
-gls.right[1] = {
-	lsp_status = {
-		provider = function()
-			local clients = vim.lsp.buf_get_clients(0)
-			local ret = ""
-			for i, value in pairs(clients) do
-				ret = ret .. value.name
-				if i == #clients then
-					ret = ret .. "   "
-				else
-					ret = ret .. " / "
-				end
-			end
-			return ret
-		end,
-		highlight = { colors.grey_fg2, colors.statusline_bg },
-	},
-}
-
-gls.right[2] = {
-	GitIcon = {
-		provider = function()
-			return " "
-		end,
-		condition = require("galaxyline.condition").check_git_workspace,
-		highlight = { colors.grey_fg2, colors.statusline_bg },
-	},
-}
-
-gls.right[3] = {
-	GitBranch = {
-		provider = "GitBranch",
-		condition = require("galaxyline.condition").check_git_workspace,
-		highlight = { colors.grey_fg2, colors.statusline_bg },
-	},
-}
-
-gls.right[4] = {
-	viMode_icon = {
-		provider = function()
-			return " "
-		end,
-		highlight = { colors.statusline_bg, colors.red },
-		separator = " ",
-		separator_highlight = { colors.red, colors.statusline_bg },
-	},
-}
-
-gls.right[5] = {
-	ViMode = {
-		provider = function()
-			local alias = {
-				n = "Normal",
-				i = "Insert",
-				c = "Command",
-				V = "Visual",
-				[""] = "Visual",
-				v = "Visual",
-				R = "Replace",
-			}
-			local current_Mode = alias[vim.fn.mode()]
-
-			if current_Mode == nil then
-				return "  Terminal "
-			else
-				return "  " .. current_Mode .. " "
-			end
-		end,
-		highlight = { colors.red, colors.lightbg },
-	},
-}
-
-gls.right[6] = {
-	some_icon = {
-		provider = function()
-			return " "
-		end,
-		separator = "",
-		separator_highlight = { colors.green, colors.lightbg },
-		highlight = { colors.lightbg, colors.green },
-	},
-}
-
-gls.right[7] = {
-	line_percentage = {
-		provider = function()
-			local current_line = vim.fn.line(".")
-			local total_line = vim.fn.line("$")
-
-			if current_line == 1 then
-				return "  Top "
-			elseif current_line == vim.fn.line("$") then
-				return "  Bot "
-			end
-			local result, _ = math.modf((current_line / total_line) * 100)
-			return "  " .. result .. "% "
-		end,
-		highlight = { colors.green, colors.lightbg },
-	},
-}
+})
