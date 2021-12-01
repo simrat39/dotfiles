@@ -9,6 +9,7 @@ local beautiful = require("beautiful")
 local treetile = require("treetile")
 local keymaps = require("keymaps")
 local errors = require("errors")
+local fsutils = require("utils/fs")
 
 local services = require("services")
 local notifications = require("notifications")
@@ -18,19 +19,15 @@ require("autostart")
 
 errors.handle()
 
-local function get_theme_file()
-  return gears.filesystem.get_configuration_dir() .. "theme.lua"
-end
-
 -- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(get_theme_file())
+beautiful.init(fsutils.get_theme_file())
 
 services.init()
 notifications.init()
 keymaps.setup_global_keymaps()
 
-local wibar = require("wibar")
+local wibar = require("wibar/wibar")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -105,6 +102,20 @@ awful.rules.rules = {
     },
   },
 
+  {
+    rule = {
+      class = "plasmawindowed",
+    },
+    properties = {
+      floating = true,
+      placement = function(w)
+        awful.placement.top_right(w, {
+          honor_workarea = true,
+        })
+      end,
+    },
+  },
+
   -- Add titlebars to normal clients and dialogs
   {
     rule_any = { type = { "normal", "dialog" } },
@@ -118,9 +129,7 @@ titlebar.init()
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
   -- make it rounded lol
-  c.shape = function(cr, w, h)
-    gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
-  end
+  c.shape = beautiful.global_rounded_rect_shape
 
   -- Set the windows at the slave,
   -- i.e. put it at the end of others instead of setting it master.

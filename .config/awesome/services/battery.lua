@@ -1,5 +1,6 @@
 local upower = require("lgi").require("UPowerGlib")
 local gears = require("gears")
+local awesome = awesome
 
 local M = {}
 

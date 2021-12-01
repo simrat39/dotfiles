@@ -46,7 +46,13 @@ function M.show(state)
     autostart = true,
   })
 
-  local stylesheet = "" .. "svg { color:" .. beautiful.dracula.pink .. "; } "
+  local stylesheet = ""
+    .. "svg { color:"
+    .. beautiful.dracula.pink
+    .. "; fill: "
+    .. beautiful.dracula.pink
+    .. " } "
+
   M.volume_image = wibox.widget({
     image = muted and mute_image or default_image,
     forced_width = beautiful.dpi(40),
@@ -112,7 +118,7 @@ function M.show(state)
         },
       })
     end,
-    shape = gears.shape.rounded_rect,
+    shape = beautiful.global_rounded_rect_shape,
   })
 end
 

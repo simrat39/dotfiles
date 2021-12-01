@@ -66,13 +66,16 @@ theme.border_marked = dracula.red
 
 -- Client
 theme.border_radius = dpi(8)
+theme.global_rounded_rect_shape = function(cr, w, h)
+  gears.shape.rounded_rect(cr, w, h, theme.border_radius)
+end
 
 -- Wibar
 theme.wibar_height = dpi(38)
 theme.wibar_margins = {
-  top = dpi(12),
-  left = dpi(10),
-  right = dpi(10),
+  top = dpi(0),
+  left = dpi(0),
+  right = dpi(0),
   bottom = dpi(0),
 }
 theme.wibar_padding = {
@@ -81,11 +84,10 @@ theme.wibar_padding = {
   right = dpi(6),
   bottom = dpi(6),
 }
-theme.wibar_shape = gears.shape.rounded_rect
+theme.wibar_shape = nil
 
 theme.wibar_generic_item_padding_horizontal = dpi(10)
 theme.wibar_generic_item_padding_vertical = dpi(2)
-theme.wibar_generic_spacing_horizontal = dpi(1)
 
 -- Systray
 theme.systray_icon_spacing = dpi(8)

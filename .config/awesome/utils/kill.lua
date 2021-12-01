@@ -1,3 +1,5 @@
+local awful = require("awful")
+
 local M = {}
 
 function M.kill(pid)
