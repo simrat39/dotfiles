@@ -6,10 +6,6 @@ local inoremap = function(lhs, rhs)
 	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true })
 end
 
-local inosilentexprremap = function(lhs, rhs)
-	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true, expr = true, silent = true })
-end
-
 local vnoremap = function(lhs, rhs)
 	vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
 end

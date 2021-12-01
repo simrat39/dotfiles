@@ -23,8 +23,11 @@ require("packer").startup(function(use)
 	-- indent lines
 	use("lukas-reineke/indent-blankline.nvim")
 	-- statusline
-	use("famiu/feline.nvim")
+	-- use("famiu/feline.nvim")
+	use("~/dev/plugins/feline.nvim")
 	use("~/dev/plugins/floatline.nvim")
+
+	use("tpope/vim-scriptease")
 
 	-- =====================
 	-- TELESCOPE
@@ -52,6 +55,8 @@ require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-vsnip")
+	use("hrsh7th/cmp-emoji")
 
 	use("williamboman/nvim-lsp-installer")
 
@@ -64,7 +69,7 @@ require("packer").startup(function(use)
 	use("folke/lua-dev.nvim")
 	use("ckipp01/stylua-nvim")
 	-- flutter
-	use("akinsho/flutter-tools.nvim")
+	-- use("akinsho/flutter-tools.nvim")
 	-- snippets
 	use("hrsh7th/vim-vsnip")
 	-- dart snippets
@@ -88,7 +93,7 @@ require("packer").startup(function(use)
 	-- OTHERS
 	-- =====================
 	-- Discord
-	-- use("andweeb/presence.nvim")
+	use("andweeb/presence.nvim")
 	-- Pairs ()
 	use("windwp/nvim-autopairs")
 	-- Startify

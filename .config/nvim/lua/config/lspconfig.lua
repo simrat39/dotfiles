@@ -3,7 +3,11 @@ local setup_auto_format = require("utils.lsp").setup_auto_format
 
 setup_auto_format("dart")
 setup_auto_format("rs")
+
 setup_auto_format("cpp")
+setup_auto_format("cc")
+setup_auto_format("h")
+
 setup_auto_format("js")
 setup_auto_format("css")
 setup_auto_format("tsx")

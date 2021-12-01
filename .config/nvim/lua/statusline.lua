@@ -25,7 +25,7 @@ local components = {
 		{
 			{
 				provider = function()
-					return " " .. vi_mode_provider.get_vim_mode() .. " "
+					return " " .. (vi_mode_provider.get_vim_mode() or "term") .. " "
 				end,
 				left_sep = {
 					str = "",
@@ -315,10 +315,6 @@ local components = {
 	},
 }
 
-vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
-vim.cmd(string.format("hi NvimTreeStatusLine guibg=%s guifg=%s", dracula.background, dracula.background))
-vim.cmd(string.format("hi NvimTreeStatusLineNC guibg=%s", dracula.background))
-
 local disabled = { "NvimTree", "Outline" }
 
 R("feline").setup({
@@ -336,4 +332,8 @@ R("feline").setup({
 	force_inactive = { filetypes = disabled },
 })
 
-require("floatline").setup({ bg = "StatusLineNC" })
+-- require("floatline").setup({ bg = "StatusLineNC" })
+
+vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
+vim.cmd(string.format("hi NvimTreeStatusLine guibg=%s guifg=%s", dracula.background, dracula.background))
+vim.cmd(string.format("hi NvimTreeStatusLineNC guibg=%s", dracula.background))
