@@ -8,7 +8,8 @@ require("packer").startup(function(use)
 	-- Top buffer/tab line
 	use("akinsho/nvim-bufferline.lua")
 	-- Dracula
-	use("~/dev/darker-dracula/vim")
+	use({"darker-dracula/vim", as="dracula"})
+	-- use("~/dev/darker-dracula/vim")
 	-- Git in the gutter
 	use("lewis6991/gitsigns.nvim")
 	-- dev-icons
@@ -23,9 +24,9 @@ require("packer").startup(function(use)
 	-- indent lines
 	use("lukas-reineke/indent-blankline.nvim")
 	-- statusline
-	-- use("famiu/feline.nvim")
-	use("~/dev/plugins/feline.nvim")
-	use("~/dev/plugins/floatline.nvim")
+	use("famiu/feline.nvim")
+	--use("~/dev/plugins/feline.nvim")
+	--use("~/dev/plugins/floatline.nvim")
 
 	use("tpope/vim-scriptease")
 
@@ -69,7 +70,7 @@ require("packer").startup(function(use)
 	use("folke/lua-dev.nvim")
 	use("ckipp01/stylua-nvim")
 	-- flutter
-	-- use("akinsho/flutter-tools.nvim")
+	use("akinsho/flutter-tools.nvim")
 	-- snippets
 	use("hrsh7th/vim-vsnip")
 	-- dart snippets
@@ -87,7 +88,7 @@ require("packer").startup(function(use)
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	-- idk
 	use("jose-elias-alvarez/null-ls.nvim")
-	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- =====================
 	-- OTHERS
@@ -104,7 +105,7 @@ require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use("antoinemadec/FixCursorHold.nvim")
 	-- file trees
-	-- use("kyazdani42/nvim-tree.lua")
+	use("kyazdani42/nvim-tree.lua")
 	-- tpope
 	use("tpope/vim-surround")
 end)

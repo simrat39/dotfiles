@@ -20,7 +20,7 @@ setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("desktop-notify").override_vim_notify()
+-- require("desktop-notify").override_vim_notify()
 
 -----------------------
 -- Webdev

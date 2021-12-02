@@ -1,8 +1,8 @@
 */.uuid
 
-.config/zsh/.oh*
-.config/zsh/.zsh_history
-.config/zsh/.zcompdump-*
-.config/zsh/.zcompdump
+zsh/.config/zsh/.oh*
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zcompdump-*
+zsh/.config/zsh/.zcompdump
 
-.config/nvim/plugin
+nvim/.config/nvim/plugin
