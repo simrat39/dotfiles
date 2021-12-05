@@ -1,4 +1,4 @@
-vim.g.dashboard_default_executive = 'telescope'
+vim.g.dashboard_default_executive = "telescope"
 
 local ascii = [[
 ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿
@@ -29,6 +29,8 @@ local ascii = [[
 ]]
 
 local lines = {}
-for s in string.gmatch(ascii, "[^\r\n]+") do table.insert(lines, s) end
+for s in string.gmatch(ascii, "[^\r\n]+") do
+  table.insert(lines, s)
+end
 
 vim.g.dashboard_custom_header = lines
