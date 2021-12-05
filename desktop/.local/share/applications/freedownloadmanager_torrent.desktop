@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/opt/freedownloadmanager/fdm %u
+Icon=freedownloadmanager_torrent
+MimeType=application/x-bittorrent
+Name=Free Download Manager
+NoDisplay=true
+Type=Application

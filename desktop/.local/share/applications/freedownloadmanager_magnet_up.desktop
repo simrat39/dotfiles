@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/opt/freedownloadmanager/fdm %u
+Icon=freedownloadmanager_magnet_up
+MimeType=x-scheme-handler/magnet
+Name=Free Download Manager
+NoDisplay=true
+Type=Application
