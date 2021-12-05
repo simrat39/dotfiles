@@ -1,5 +1,6 @@
-/home/simrat39/dotfiles/awesome/.config/awesome
 /home/simrat39/dotfiles
+/home/simrat39/.config
+/home/simrat39/dotfiles/awesome/.config/awesome
 /home/simrat39/dev/rust-proj
 /home/simrat39/dev
 /home/simrat39/dev/rust-tools.nvim
@@ -16,4 +17,3 @@
 /home/simrat39/dotfiles/bspwm
 /home/simrat39/dotfiles/bspwm/.config
 /home/simrat39/spotify
-/home/simrat39/dev/awesomewm-gnome
