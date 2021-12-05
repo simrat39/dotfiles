@@ -24,9 +24,7 @@ require("packer").startup(function(use)
   -- indent lines
   use("lukas-reineke/indent-blankline.nvim")
   -- statusline
-  use("famiu/feline.nvim")
-  --use("~/dev/plugins/feline.nvim")
-  --use("~/dev/plugins/floatline.nvim")
+  use({ "famiu/feline.nvim", branch = "develop" })
 
   use("tpope/vim-scriptease")
 
