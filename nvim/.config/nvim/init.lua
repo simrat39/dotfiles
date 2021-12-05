@@ -2,7 +2,7 @@ require("globals")
 require("general")
 require("mappings")
 require("plugins")
-R("statusline")
+require("statusline")
 
 require("config/bufferline")
 require("config/compe")
