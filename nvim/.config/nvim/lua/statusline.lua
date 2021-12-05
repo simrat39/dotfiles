@@ -327,7 +327,7 @@ local disabled = { "NvimTree", "Outline" }
 
 R("feline").setup({
   components = components,
-  colors = {
+  theme = {
     fg = dracula.foreground,
     cyan = dracula.cyan,
     green = dracula.green,
@@ -339,8 +339,6 @@ R("feline").setup({
   },
   force_inactive = { filetypes = disabled },
 })
-
--- require("floatline").setup({ bg = "StatusLineNC" })
 
 vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
 vim.cmd(
