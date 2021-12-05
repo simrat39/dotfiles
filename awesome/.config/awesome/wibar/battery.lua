@@ -14,7 +14,7 @@ function M.get()
 end
 
 local function get_stylesheet_for_color(color)
-  return "" .. "svg { fill:" .. color .. "; } "
+  return "" .. "svg { color:" .. color .. "; } "
 end
 
 function M.init()
@@ -31,8 +31,32 @@ function M.init()
     visible = false,
   })
 
+  M.battery_icon = wibox.widget({
+    stylesheet = get_stylesheet_for_color(beautiful.dracula.green),
+    image = fs.icon("battery-full-solid"),
+    forced_height = beautiful.dpi(25),
+    forced_width = beautiful.dpi(25),
+    valign = "center",
+    widget = wibox.widget.imagebox,
+  })
+
   M.percentage_textbox = wibox.widget.textbox("  ")
+
   awesome.connect_signal("sim::battery", function(data)
+    local p = tonumber(data.percentage)
+
+    if p >= 0 and p <= 20 then
+      M.battery_icon.image = fs.icon("battery-empty-solid")
+    elseif p > 20 and p <= 40 then
+      M.battery_icon.image = fs.icon("battery-quarter-solid")
+    elseif p > 40 and p <= 60 then
+      M.battery_icon.image = fs.icon("battery-half-solid")
+    elseif p > 60 and p <= 80 then
+      M.battery_icon.image = fs.icon("battery-three-quarters-solid")
+    else
+      M.battery_icon.image = fs.icon("battery-full-solid")
+    end
+
     local markup = "  " .. data.percentage .. "%"
 
     if data.state == battery_service.DeviceState.CHARGING then
@@ -47,11 +71,7 @@ function M.init()
   battery_service.emit_current_status(battery_service.get_device())
 
   M.widget = wibox.widget({
-    {
-      stylesheet = get_stylesheet_for_color(beautiful.dracula.green),
-      image = fs.icon("battery_full"),
-      widget = wibox.widget.imagebox,
-    },
+    M.battery_icon,
     M.percentage_textbox,
     {
       M.charging_image,
@@ -61,23 +81,6 @@ function M.init()
     },
     layout = wibox.layout.fixed.horizontal,
   })
-
-  M.widget:connect_signal("button::release", function()
-    if not M.plasma_shown then
-      awful.spawn.single_instance(
-        "plasmawindowed --statusnotifier org.kde.plasma.battery",
-        nil,
-        function(c)
-          M.plasma_shown = true
-          M.plasma_pid = c.pid
-        end
-      )
-    elseif M.plasma_pid then
-      kill.kill(M.plasma_pid)
-      M.plasma_shown = false
-      M.plasma_pid = nil
-    end
-  end)
 end
 
 return M
