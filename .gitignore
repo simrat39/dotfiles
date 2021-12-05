@@ -4,5 +4,6 @@ zsh/.config/zsh/.oh*
 zsh/.config/zsh/.zsh_history
 zsh/.config/zsh/.zcompdump-*
 zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/.zdirs
 
 nvim/.config/nvim/plugin
