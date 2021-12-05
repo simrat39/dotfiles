@@ -51,6 +51,7 @@ client.connect_signal("request::titlebars", function(c)
       },
       -- Middle (nothing)
       {
+        buttons = buttons,
         layout = wibox.layout.fixed.horizontal,
       },
       { -- Right

@@ -1,0 +1,9 @@
+[ActivityManager][Global Shortcuts]
+switch-to-activity-ec6d11e1-9cc4-49ee-a378-ebbb211e1a68=
+
+[ksmserver][Global Shortcuts]
+Halt Without Confirmation=
+Lock Session=Screensaver; Ctrl+Alt+L
+Log Out=Ctrl+Alt+Del
+Log Out Without Confirmation=
+Reboot Without Confirmation=

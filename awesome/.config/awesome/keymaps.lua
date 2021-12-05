@@ -233,7 +233,11 @@ M.clientkeys = gears.table.join(
   awful.key(
     { M.modkey, "Control" },
     "space",
-    awful.client.floating.toggle,
+    -- awful.client.floating.toggle,
+    function (c)
+       c.floating = true
+       c.ontop= true
+    end,
     { description = "toggle floating", group = "client" }
   ),
 

@@ -21,7 +21,5 @@ require("config/symbols-outline")
 require("config/telescope")
 require("config/tree-sitter")
 
-require("lspui").setup()
-
 vim.cmd("colorscheme dracula")
 -- vim.opt.guifont='FiraCodeNerdFont'

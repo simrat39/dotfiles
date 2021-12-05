@@ -59,6 +59,8 @@ require("packer").startup(function(use)
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/cmp-emoji")
 
+    use("L3MON4D3/LuaSnip")
+
 	use("williamboman/nvim-lsp-installer")
 
 	-- tree-sitter
@@ -89,6 +91,8 @@ require("packer").startup(function(use)
 	-- idk
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+    -- rust 
+    use("/home/simrat39/dev/rust-tools.nvim")
 
 	-- =====================
 	-- OTHERS

@@ -121,6 +121,13 @@ awful.rules.rules = {
     rule_any = { type = { "normal", "dialog" } },
     properties = { titlebars_enabled = true },
   },
+
+    { rule_any = {floating = true},
+        properties = {
+            placement = awful.placement.centered,
+            ontop = true
+        }
+    },
 }
 
 titlebar.init()

@@ -38,27 +38,9 @@ super + m
 super + {_,shift + }c
     bspc node -f {next,prev}.local
 
-# Handled by gnome-flashback
-# Brightness
-#XF86MonBrightness{Up,Down}
- #  $HOME/.bin/brightness {--inc,--dec} 5
-
-# Volume
-#XF86Audio{Raise,Lower}Volume
- #  $HOME/.bin/volume --volupdate {+2%,-2%}
-
-#XF86AudioMute
- #  $HOME/.bin/volume toggle
-
-@Print
-    rm -rf /tmp/screenshot.png && notify-send "Taking Screenshot" && scrot -s /tmp/screenshot.png -e 'xclip -selection c -t image/png < $f' && notify-send -i "/tmp/screenshot.png" "Screenshot Taken: /tmp/screenshot.png"
-
 # Focus node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
-
-super + z
-    adb shell input dpad keyevent 23

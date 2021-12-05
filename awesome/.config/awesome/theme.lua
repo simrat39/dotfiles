@@ -17,7 +17,7 @@ theme.dpi = dpi
 theme.font = "sans 8"
 
 -- wallpaper
-theme.wallpaper = "~/Desktop/absratc.jpg"
+theme.wallpaper = "/home/simrat39/Media/macos-monterey-2560x1440_897687-mm-90.jpg"
 local dracula = {
   background = "#1E1F29",
   current_line = "#282a36",
