@@ -17,7 +17,8 @@ theme.dpi = dpi
 theme.font = "sans 8"
 
 -- wallpaper
-theme.wallpaper = "/home/simrat39/Media/macos-monterey-2560x1440_897687-mm-90.jpg"
+theme.wallpaper = "/home/simrat39/Media/mechanical_love.png"
+
 local dracula = {
   background = "#1E1F29",
   current_line = "#282a36",
@@ -73,18 +74,19 @@ end
 -- Wibar
 theme.wibar_height = dpi(38)
 theme.wibar_margins = {
-  top = dpi(0),
-  left = dpi(0),
-  right = dpi(0),
-  bottom = dpi(0),
+  top = dpi(10),
+  left = dpi(10),
+  right = dpi(10),
+  bottom = dpi(10),
 }
 theme.wibar_padding = {
   top = dpi(6),
-  left = dpi(6),
-  right = dpi(6),
+  left = dpi(12),
+  right = dpi(12),
   bottom = dpi(6),
 }
-theme.wibar_shape = nil
+
+theme.wibar_shape = theme.global_rounded_rect_shape
 
 theme.wibar_generic_item_padding_horizontal = dpi(10)
 theme.wibar_generic_item_padding_vertical = dpi(2)

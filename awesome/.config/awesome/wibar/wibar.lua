@@ -8,6 +8,7 @@ local battery = require("wibar/battery")
 local separator = require("wibar/separator")
 local taglist = require("wibar/taglist")
 local volume = require("wibar/volume")
+local layoutbox = require("wibar/layoutbox")
 
 local client = client
 
@@ -43,6 +44,7 @@ volume.init()
 
 function M.wibar(s)
   s.taglist = taglist.get(s)
+  s.layoutbox = layoutbox.get(s)
 
   -- Create a tasklist widget
   s.mytasklist = awful.widget.tasklist({
@@ -73,7 +75,7 @@ function M.wibar(s)
   s.mywibox = awful.wibar({
     position = "bottom",
     screen = s,
-    bg = color.with_opacity(beautiful.dracula.background, 50),
+    bg = color.with_opacity(beautiful.dracula.background, 100),
   })
   -- Add widgets to the wibox
   s.mywibox:setup({
@@ -91,6 +93,7 @@ function M.wibar(s)
       },
       { -- Right widgets
         wibox.widget.systray(),
+        separator.get(),
         battery.get(),
         separator.get(),
         volume.get(),
@@ -98,6 +101,8 @@ function M.wibar(s)
         my_date_widget,
         separator.get(),
         my_time_widget,
+        separator.get(),
+        s.layoutbox,
         layout = wibox.layout.fixed.horizontal,
       },
     },

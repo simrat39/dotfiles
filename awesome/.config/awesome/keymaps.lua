@@ -19,13 +19,6 @@ function M.setup_global_keymaps()
   local keys = gears.table.join(
     awful.key(
       { M.modkey },
-      "s",
-      hotkeys_popup.show_help,
-      { description = "show help", group = "awesome" }
-    ),
-
-    awful.key(
-      { M.modkey },
       "Left",
       awful.tag.viewprev,
       { description = "view previous", group = "tag" }
@@ -230,16 +223,10 @@ M.clientkeys = gears.table.join(
     group = "client",
   }),
 
-  awful.key(
-    { M.modkey, "Control" },
-    "space",
-    -- awful.client.floating.toggle,
-    function (c)
-       c.floating = true
-       c.ontop= true
-    end,
-    { description = "toggle floating", group = "client" }
-  ),
+  awful.key({ M.modkey }, "s", function(c)
+    c.floating = not c.floating
+    c.ontop = c.floating
+  end, { description = "toggle floating", group = "client" }),
 
   awful.key({ M.modkey, "Control" }, "Return", function(c)
     c:swap(awful.client.getmaster())
