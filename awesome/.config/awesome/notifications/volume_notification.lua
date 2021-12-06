@@ -114,7 +114,7 @@ function M.show(state)
         honor_workarea = true,
         offset = {
           y = beautiful.useless_gap + beautiful.dpi(5),
-          x = -beautiful.useless_gap,
+          x = -beautiful.useless_gap - beautiful.dpi(5),
         },
       })
     end,
