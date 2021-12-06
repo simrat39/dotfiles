@@ -6,6 +6,8 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local font = require("utils/font")
+
 local gears = require("gears")
 local themes_path = gears.filesystem.get_themes_dir()
 
@@ -14,7 +16,7 @@ local theme = {}
 theme.dpi = dpi
 
 -- font
-theme.font = "sans 8"
+theme.font = font.get_default()
 
 -- wallpaper
 theme.wallpaper = "/home/simrat39/Media/mechanical_love.png"
@@ -96,9 +98,9 @@ theme.systray_icon_spacing = dpi(8)
 theme.bg_systray = dracula.selection
 
 -- Tasklist
-theme.tasklist_shape = gears.shape.rounded_rect
-theme.tasklist_bg_focus = colors.taglist_bg_focus
-theme.tasklist_bg_normal = dracula.selection
+theme.tasklist_shape = theme.global_rounded_rect_shape
+theme.tasklist_bg_focus = dracula.selection
+theme.tasklist_bg_normal = dracula.background
 
 -- Client titlebar
 theme.titlebar_pos = "bottom"
@@ -159,15 +161,15 @@ theme.titlebar_floating_button_focus_active = colored_round_button_surface(
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-theme.taglist_bg_focus = colors.taglist_bg_focus
-theme.taglist_bg_occupied = dracula.selection
+theme.taglist_bg_focus = dracula.selection
+theme.taglist_bg_occupied = dracula.background
 theme.taglist_bg_urgent = dracula.red
 
 theme.taglist_fg_focus = dracula.foreground
 theme.taglist_fg_occupied = dracula.foreground
 theme.taglist_fg_empty = dracula.selection
 
-theme.taglist_shape = gears.shape.rounded_rect
+theme.taglist_shape = theme.global_rounded_rect_shape
 
 -- Variables set for theming notifications:
 -- notification_font

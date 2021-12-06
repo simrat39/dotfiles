@@ -2,6 +2,8 @@ local keymaps = require("keymaps")
 local wibox = require("wibox")
 local gears = require("gears")
 local awful = require("awful")
+local font = require("utils/font")
+
 local client = client
 
 local M = { widget = nil }
@@ -56,7 +58,7 @@ function M.get(s)
       {
         {
           id = "text_role",
-          visible = true,
+          text = "0",
           widget = wibox.widget.textbox,
         },
         margins = {
