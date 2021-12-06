@@ -101,6 +101,7 @@ theme.bg_systray = dracula.selection
 theme.tasklist_shape = theme.global_rounded_rect_shape
 theme.tasklist_bg_focus = dracula.selection
 theme.tasklist_bg_normal = dracula.background
+theme.tasklist_bg_minimize = dracula.background
 
 -- Client titlebar
 theme.titlebar_pos = "bottom"
