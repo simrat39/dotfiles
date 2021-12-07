@@ -22,7 +22,7 @@ ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=F10
-Cut=Ctrl+X; Shift+Del
+Cut=Shift+Del; Ctrl+X
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -46,7 +46,7 @@ Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=F1
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+Alt+,
 Mail=
 MoveToTrash=Del
@@ -55,7 +55,7 @@ Next=PgDown
 NextCompletion=Ctrl+Down
 Open=Ctrl+O
 OpenRecent=
-Paste=Shift+Ins; Ctrl+V
+Paste=Ctrl+V; Shift+Ins
 Paste Selection=Ctrl+Shift+Ins
 Preferences=Ctrl+Shift+,
 PrevCompletion=Ctrl+Up
@@ -88,7 +88,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=Shift+F1
 Zoom=
-ZoomIn=Ctrl+=; Ctrl++
+ZoomIn=Ctrl++; Ctrl+=
 ZoomOut=Ctrl+-
 
 [kaccess][Global Shortcuts]
@@ -108,7 +108,7 @@ decrease_microphone_volume=Microphone Volume Down
 decrease_volume=
 increase_microphone_volume=Microphone Volume Up
 increase_volume=
-mic_mute=Microphone Mute; Meta+Volume Mute
+mic_mute=Meta+Volume Mute; Microphone Mute
 mute=
 
 [ksmserver][Global Shortcuts]
@@ -122,7 +122,7 @@ Reboot Without Confirmation=
 Activate Window Demanding Attention=Ctrl+Alt+A
 Decrease Opacity=
 Expose=Ctrl+F9
-ExposeAll=Ctrl+F10; Launch (C)
+ExposeAll=Launch (C); Ctrl+F10
 ExposeClass=Ctrl+F7
 Increase Opacity=
 Invert Screen Colors=
@@ -283,6 +283,14 @@ _launch=Alt+F2; Alt+Space; Search
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=Meta+.
 
+[org.kde.spectacle.desktop][Global Shortcuts]
+ActiveWindowScreenShot=Meta+Print
+CurrentMonitorScreenShot=
+FullScreenScreenShot=Shift+Print
+RectangularRegionScreenShot=Meta+Shift+Print
+WindowUnderCursorScreenShot=Meta+Ctrl+Print
+_launch=Print
+
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
 Decrease Screen Brightness=Monitor Brightness Down
@@ -319,7 +327,7 @@ repeat_action=Ctrl+Alt+R
 show dashboard=Ctrl+F12
 show-barcode=
 show-on-mouse-pos=Meta+V
-stop current activity=Meta+S
+stop current activity=
 switch to next activity=
 switch to previous activity=
 toggle do not disturb=
