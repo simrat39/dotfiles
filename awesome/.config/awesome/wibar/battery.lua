@@ -78,11 +78,11 @@ function M.init()
 
     local text = data.percentage .. "%"
 
-    -- if data.state == battery_service.DeviceState.CHARGING then
-    --   M.charging_text.visible = true
-    -- else
-    --   M.charging_text.visible = false
-    -- end
+    if data.state == battery_service.DeviceState.CHARGING then
+      M.charging_text.visible = true
+    else
+      M.charging_text.visible = false
+    end
 
     M.percentage_textbox.text = text
   end)
