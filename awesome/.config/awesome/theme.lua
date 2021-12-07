@@ -61,7 +61,8 @@ theme.fg_urgent = colors.white
 theme.fg_minimize = colors.white
 
 -- Borders
-theme.useless_gap = dpi(10)
+theme.useless_gap = dpi(5)
+
 theme.border_width = dpi(2)
 theme.border_normal = dracula.background
 theme.border_focus = dracula.selection
