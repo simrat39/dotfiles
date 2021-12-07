@@ -2,7 +2,7 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local fs = require("utils/fs")
 local battery_service = require("services/battery")
-local color = require("utils/color")
+local color_utils = require("utils/color")
 ---@diagnostic disable-next-line: undefined-global
 local awesome = awesome
 
@@ -17,16 +17,6 @@ local function get_stylesheet_for_color(color)
 end
 
 function M.init()
-  M.charging_text = wibox.widget({
-    {
-      widget = wibox.widget.textbox,
-      text = "+",
-    },
-    margins = { left = beautiful.dpi(4) },
-    visible = true,
-    widget = wibox.container.margin,
-  })
-
   M.battery_icon = wibox.widget({
     stylesheet = get_stylesheet_for_color(beautiful.dracula.green),
     image = fs.icon("battery-full-solid"),
@@ -50,7 +40,6 @@ function M.init()
           widget = wibox.container.margin,
         },
         M.percentage_textbox,
-        M.charging_text,
         {
           margins = {
             left = beautiful.wibar_generic_item_padding_horizontal,
@@ -67,7 +56,7 @@ function M.init()
     max_value = 1,
     min_value = 0,
     border_color = beautiful.dracula.background,
-    color = color.with_opacity(beautiful.dracula.green, 90),
+    color = color_utils.with_opacity(beautiful.dracula.green, 90),
     widget = wibox.container.radialprogressbar,
   })
 
@@ -79,9 +68,9 @@ function M.init()
     local text = data.percentage .. "%"
 
     if data.state == battery_service.DeviceState.CHARGING then
-      M.charging_text.visible = true
+      M.widget.color = color_utils.with_opacity(beautiful.dracula.red, 90)
     else
-      M.charging_text.visible = false
+      M.widget.color = color_utils.with_opacity(beautiful.dracula.green, 90)
     end
 
     M.percentage_textbox.text = text
