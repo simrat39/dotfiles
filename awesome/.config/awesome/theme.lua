@@ -91,7 +91,7 @@ theme.wibar_padding = {
 
 theme.wibar_shape = theme.global_rounded_rect_shape
 
-theme.wibar_generic_item_padding_horizontal = dpi(10)
+theme.wibar_generic_item_padding_horizontal = dpi(14)
 theme.wibar_generic_item_padding_vertical = dpi(2)
 
 -- Systray

@@ -1,9 +1,8 @@
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local awful = require("awful")
 local fs = require("utils/fs")
-local kill = require("utils/kill")
 local battery_service = require("services/battery")
+local color = require("utils/color")
 ---@diagnostic disable-next-line: undefined-global
 local awesome = awesome
 
@@ -18,17 +17,14 @@ local function get_stylesheet_for_color(color)
 end
 
 function M.init()
-  M.charging_image = wibox.widget({
+  M.charging_text = wibox.widget({
     {
-      stylesheet = get_stylesheet_for_color(beautiful.dracula.red),
-      image = fs.icon("thunder"),
-      widget = wibox.widget.imagebox,
-      forced_height = beautiful.dpi(13),
-      forced_width = beautiful.dpi(13),
+      widget = wibox.widget.textbox,
+      text = "+",
     },
+    margins = { left = beautiful.dpi(4) },
+    visible = true,
     widget = wibox.container.margin,
-    margins = { left = beautiful.dpi(4), right = beautiful.dpi(-2) },
-    visible = false,
   })
 
   M.battery_icon = wibox.widget({
@@ -40,47 +36,58 @@ function M.init()
     widget = wibox.widget.imagebox,
   })
 
-  M.percentage_textbox = wibox.widget.textbox("  ")
+  M.percentage_textbox = wibox.widget({
+    widget = wibox.widget.textbox,
+  })
+
+  M.widget = wibox.widget({
+    {
+      {
+        {
+          margins = {
+            left = beautiful.wibar_generic_item_padding_horizontal,
+          },
+          widget = wibox.container.margin,
+        },
+        M.percentage_textbox,
+        M.charging_text,
+        {
+          margins = {
+            left = beautiful.wibar_generic_item_padding_horizontal,
+          },
+          widget = wibox.container.margin,
+        },
+        layout = wibox.layout.fixed.horizontal,
+      },
+      bg = beautiful.dracula.selection,
+      shape = beautiful.global_rounded_rect_shape,
+      layout = wibox.container.background,
+    },
+    value = 0.5,
+    max_value = 1,
+    min_value = 0,
+    border_color = beautiful.dracula.background,
+    color = color.with_opacity(beautiful.dracula.green, 90),
+    widget = wibox.container.radialprogressbar,
+  })
 
   awesome.connect_signal("sim::battery", function(data)
     local p = tonumber(data.percentage)
 
-    if p >= 0 and p <= 20 then
-      M.battery_icon.image = fs.icon("battery-empty-solid")
-    elseif p > 20 and p <= 40 then
-      M.battery_icon.image = fs.icon("battery-quarter-solid")
-    elseif p > 40 and p <= 60 then
-      M.battery_icon.image = fs.icon("battery-half-solid")
-    elseif p > 60 and p <= 80 then
-      M.battery_icon.image = fs.icon("battery-three-quarters-solid")
-    else
-      M.battery_icon.image = fs.icon("battery-full-solid")
-    end
+    M.widget.value = p / 100
 
-    local markup = "  " .. data.percentage .. "%"
+    local text = data.percentage .. "%"
 
-    if data.state == battery_service.DeviceState.CHARGING then
-      M.charging_image.visible = true
-    else
-      M.charging_image.visible = false
-    end
+    -- if data.state == battery_service.DeviceState.CHARGING then
+    --   M.charging_text.visible = true
+    -- else
+    --   M.charging_text.visible = false
+    -- end
 
-    M.percentage_textbox:set_markup_silently(markup)
+    M.percentage_textbox.text = text
   end)
 
   battery_service.emit_current_status(battery_service.get_device())
-
-  M.widget = wibox.widget({
-    M.battery_icon,
-    M.percentage_textbox,
-    {
-      M.charging_image,
-      valign = "center",
-      halign = "center",
-      widget = wibox.container.place,
-    },
-    layout = wibox.layout.fixed.horizontal,
-  })
 end
 
 return M

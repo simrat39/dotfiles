@@ -22,9 +22,7 @@ function M.search_in_buffer()
       return true
     end,
   }
-  require("telescope.builtin").current_buffer_fuzzy_find(
-    require("telescope.themes").get_dropdown(opts)
-  )
+  require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 
 function M.search_dotfiles()
