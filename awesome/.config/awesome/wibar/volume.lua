@@ -59,23 +59,6 @@ function M.init()
     bottom = beautiful.wibar_generic_item_padding_vertical,
     widget = wibox.container.margin,
   })
-
-  M.widget:connect_signal("button::release", function()
-    if not M.plasma_shown then
-      awful.spawn.single_instance(
-        "plasmawindowed --statusnotifier org.kde.plasma.volume",
-        nil,
-        function(c)
-          M.plasma_shown = true
-          M.plasma_pid = c.pid
-        end
-      )
-    elseif M.plasma_pid then
-      kill.kill(M.plasma_pid)
-      M.plasma_shown = false
-      M.plasma_pid = nil
-    end
-  end)
 end
 
 return M

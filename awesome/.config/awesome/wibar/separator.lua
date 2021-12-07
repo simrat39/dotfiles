@@ -10,8 +10,8 @@ end
 function M.init()
   M.widget = wibox.widget({
     margins = {
-      left = beautiful.dpi(6),
-      right = beautiful.dpi(6),
+      left = beautiful.dpi(4),
+      right = beautiful.dpi(4),
     },
     widget = wibox.container.margin,
   })

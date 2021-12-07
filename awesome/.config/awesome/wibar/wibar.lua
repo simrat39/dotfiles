@@ -9,6 +9,7 @@ local separator = require("wibar/separator")
 local taglist = require("wibar/taglist")
 local volume = require("wibar/volume")
 local layoutbox = require("wibar/layoutbox")
+local holder = require("wibar/holder").holder
 
 local client = client
 
@@ -77,6 +78,7 @@ function M.wibar(s)
     screen = s,
     bg = color.with_opacity(beautiful.dracula.background, 100),
   })
+
   -- Add widgets to the wibox
   s.mywibox:setup({
     {
@@ -96,13 +98,13 @@ function M.wibar(s)
         separator.get(),
         battery.get(),
         separator.get(),
-        volume.get(),
+        holder(volume.get()),
         separator.get(),
-        my_date_widget,
+        holder(my_date_widget),
         separator.get(),
-        my_time_widget,
+        holder(my_time_widget),
         separator.get(),
-        s.layoutbox,
+        holder(s.layoutbox),
         layout = wibox.layout.fixed.horizontal,
       },
     },
