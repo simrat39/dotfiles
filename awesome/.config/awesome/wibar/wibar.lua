@@ -43,6 +43,9 @@ separator.init()
 battery.init()
 volume.init()
 
+local sys = wibox.widget.systray()
+sys:set_screen("primary")
+
 function M.wibar(s)
   s.taglist = taglist.get(s)
   s.layoutbox = layoutbox.get(s)
@@ -94,7 +97,7 @@ function M.wibar(s)
         s.mytasklist, -- Middle widget
       },
       { -- Right widgets
-        wibox.widget.systray(),
+        sys,
         separator.get(),
         battery.get(),
         separator.get(),

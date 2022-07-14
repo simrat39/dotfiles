@@ -55,7 +55,7 @@ function M.init()
     value = 0.5,
     max_value = 1,
     min_value = 0,
-    border_color = beautiful.dracula.background,
+    border_color = beautiful.dracula.selection,
     color = color_utils.with_opacity(beautiful.dracula.green, 90),
     widget = wibox.container.radialprogressbar,
   })

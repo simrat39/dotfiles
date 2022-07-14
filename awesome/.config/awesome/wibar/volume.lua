@@ -23,7 +23,7 @@ function M.init()
   })
 
   M.icon_widget = wibox.widget({
-    stylesheet = get_stylesheet_for_color(beautiful.dracula.pink),
+    stylesheet = get_stylesheet_for_color(beautiful.dracula.foreground),
     image = fs.icon("volume-up-solid"),
     widget = wibox.widget.imagebox,
     forced_width = beautiful.dpi(18),
@@ -44,20 +44,23 @@ function M.init()
     {
       {
         {
-          M.icon_widget,
-          valign = "center",
-          halign = "center",
-          widget = wibox.container.place,
+          {
+            M.icon_widget,
+            valign = "center",
+            halign = "center",
+            widget = wibox.container.place,
+          },
+          top = beautiful.dpi(3),
+          widget = wibox.container.margin,
         },
-        top = beautiful.dpi(3),
-        widget = wibox.container.margin,
+        M.volume_text_widget,
+        layout = wibox.layout.fixed.horizontal,
       },
-      M.volume_text_widget,
-      layout = wibox.layout.fixed.horizontal,
+      top = beautiful.wibar_generic_item_padding_vertical,
+      bottom = beautiful.wibar_generic_item_padding_vertical,
+      widget = wibox.container.margin,
     },
-    top = beautiful.wibar_generic_item_padding_vertical,
-    bottom = beautiful.wibar_generic_item_padding_vertical,
-    widget = wibox.container.margin,
+    layout = wibox.layout.fixed.vertical,
   })
 end
 

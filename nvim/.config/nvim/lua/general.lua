@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 
 vim.opt.syntax = "enable"
 
+-- line wrapping sux
 vim.opt.wrap = false
-vim.opt.hidden = true
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 vim.opt.ruler = true
@@ -35,3 +35,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 vim.opt.shortmess:append("c")
+
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+vim.opt.laststatus = 3

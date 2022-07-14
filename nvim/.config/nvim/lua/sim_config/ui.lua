@@ -1,0 +1,1 @@
+-- require("desktop-notify").override_vim_notify()

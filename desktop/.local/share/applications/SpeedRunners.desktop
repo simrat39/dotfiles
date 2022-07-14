@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SpeedRunners
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/207140
+Icon=steam_icon_207140
+Terminal=false
+Type=Application
+Categories=Game;
