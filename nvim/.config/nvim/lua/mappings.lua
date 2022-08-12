@@ -1,21 +1,20 @@
 local nnoremap = function(lhs, rhs, silent)
-	vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = silent })
+  vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = silent })
 end
 
 local inoremap = function(lhs, rhs, silent)
-	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true, silent = silent })
+  vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true, silent = silent })
 end
 
 local snoremap = function(lhs, rhs, silent)
-	vim.api.nvim_set_keymap("s", lhs, rhs, { noremap = true, silent = silent })
+  vim.api.nvim_set_keymap("s", lhs, rhs, { noremap = true, silent = silent })
 end
 
 local vnoremap = function(lhs, rhs)
-	vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
+  vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
 end
 
 -- smartquit
-
 nnoremap("qq", '<cmd>lua require("utils/smartquit")()<CR>', true)
 
 -- Use alt + hjkl to resize windows
@@ -44,10 +43,26 @@ vnoremap(">", ">gv")
 -- nnoremap("<C-j>", "<C-w>j")
 -- nnoremap("<C-k>", "<C-w>k")
 -- nnoremap("<C-l>", "<C-w>l")
-inoremap("<C-k>", '<cmd>lua require("sim_config/luasnip").navigate(1)<CR>', true)
-snoremap("<C-k>", '<cmd>lua require("sim_config/luasnip").navigate(1)<CR>', true)
-inoremap("<C-j>", '<cmd>lua require("sim_config/luasnip").navigate(-1)<CR>', true)
-snoremap("<C-j>", '<cmd>lua require("sim_config/luasnip").navigate(-1)<CR>', true)
+inoremap(
+  "<C-k>",
+  '<cmd>lua require("sim_config/luasnip").navigate(1)<CR>',
+  true
+)
+snoremap(
+  "<C-k>",
+  '<cmd>lua require("sim_config/luasnip").navigate(1)<CR>',
+  true
+)
+inoremap(
+  "<C-j>",
+  '<cmd>lua require("sim_config/luasnip").navigate(-1)<CR>',
+  true
+)
+snoremap(
+  "<C-j>",
+  '<cmd>lua require("sim_config/luasnip").navigate(-1)<CR>',
+  true
+)
 
 -- Map Ctrl-Backspace to delete the previous word in insert mode.
 inoremap("<C-w>", "<C-\\><C-o>dB")
@@ -73,17 +88,17 @@ nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", true)
 nnoremap("<C-space>", "<cmd>lua vim.lsp.buf.hover()<CR>", true)
 vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
 
-nnoremap("ge", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", true)
-nnoremap("gE", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", true)
+nnoremap("ge", "<cmd>lua vim.diagnostic.goto_prev()<CR>", true)
+nnoremap("gE", "<cmd>lua vim.diagnostic.goto_next()<CR>", true)
 nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
-nnoremap("<Leader>le", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
 
 -- Telescope
 nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
 nnoremap("/", ':lua require("utils/telescope").search_in_buffer()<CR>')
-inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
-nnoremap("<Leader>fg", '<Esc> :lua require("telescope.builtin").live_grep()<CR>')
-nnoremap("<Leader>fd", '<Esc> :lua require("utils/telescope").search_dotfiles()<CR>')
+inoremap(
+  "<C-f>",
+  '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>'
+)

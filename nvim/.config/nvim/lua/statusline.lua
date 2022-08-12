@@ -162,7 +162,7 @@ local lol = {
       provider = function()
         local changed, icon = git_provider.git_diff_changed()
         if changed == "" then
-          changed = 0
+          changed = "0"
         end
         return string.format("%s%s", icon, changed)
       end,
@@ -179,7 +179,7 @@ local lol = {
       provider = function()
         local added, icon = git_provider.git_diff_added()
         if added == "" then
-          added = 0
+          added = "0"
         end
         return string.format("%s%s", icon, added)
       end,
@@ -202,7 +202,7 @@ local lol = {
       provider = function()
         local removed, icon = git_provider.git_diff_removed()
         if removed == "" then
-          removed = 0
+          removed = "0"
         end
         return string.format("%s%s ", icon, removed)
       end,
@@ -320,34 +320,10 @@ local lol = {
   },
 }
 
-local components = {
-  inactive = lol,
-  active = lol,
-}
+local ctp_feline = require("catppuccin.groups.integrations.feline")
 
--- local disabled = { "NvimTree", "Outline" }
+ctp_feline.setup({})
 
 R("feline").setup({
-  components = components,
-  theme = {
-    fg = dracula.foreground,
-    cyan = dracula.cyan,
-    green = dracula.green,
-    orange = dracula.orange,
-    red = dracula.red,
-    magenta = dracula.pink,
-    violet = dracula.violet,
-    yellow = dracula.yellow,
-  },
-  -- force_inactive = { filetypes = disabled },
+  components = ctp_feline.get(),
 })
-
--- vim.cmd(string.format("hi StatusLineNC guibg=%s", dracula.background))
--- vim.cmd(
---   string.format(
---     "hi NvimTreeStatusLine guibg=%s guifg=%s",
---     dracula.background,
---     dracula.background
---   )
--- )
--- vim.cmd(string.format("hi NvimTreeStatusLineNC guibg=%s", dracula.background))

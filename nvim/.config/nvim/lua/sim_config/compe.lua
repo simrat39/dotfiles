@@ -1,5 +1,16 @@
 local cmp = require("cmp")
 
+local compare = require("cmp.config.compare")
+
+---whateva
+---@param a number
+---@return number
+local function bruh(a)
+  return a + 10
+end
+
+local a = bruh(20)
+
 cmp.setup({
   snippet = {
     expand = function(args)

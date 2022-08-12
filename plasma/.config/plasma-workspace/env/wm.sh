@@ -1,2 +1,2 @@
 #!/bin/sh
-export KDEWM=" "
+export KDEWM=bspwm

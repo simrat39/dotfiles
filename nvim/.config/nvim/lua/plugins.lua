@@ -23,6 +23,17 @@ require("packer").startup(function(use)
     end,
   })
 
+  use({ "~/dev/symbols-outline.nvim", config = function()
+      require("symbols-outline").setup()
+  end })
+
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      -- require("lsp_lines").setup()
+    end,
+  })
+
   use({
     "akinsho/git-conflict.nvim",
     config = function()
@@ -41,7 +52,8 @@ require("packer").startup(function(use)
   })
 
   -- Dracula
-  use({ "darker-dracula/vim", as = "dracula" })
+  -- use({ "darker-dracula/vim", as = "dracula" })
+  use { "catppuccin/nvim", as = "catppuccin" }
   -- Git in the gutter
   use("lewis6991/gitsigns.nvim")
   -- dev-icons
@@ -118,6 +130,8 @@ require("packer").startup(function(use)
   use("jose-elias-alvarez/typescript.nvim")
   -- rust
   use("/home/simrat39/dev/rust-tools.nvim")
+  use("/home/simrat39/dev/inlay-hints.nvim")
+  use"lvimuser/lsp-inlayhints.nvim"
   -- Debugging
   use("mfussenegger/nvim-dap")
   use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
@@ -128,19 +142,10 @@ require("packer").startup(function(use)
   -- Pairs ()
   use("windwp/nvim-autopairs")
   -- which key
-  -- use({
-  --   -- "folke/which-key.nvim",
-  --   -- config = function()
-  --   --   -- require("which-key").setup({
-  --   --   --   -- your configuration comes here
-  --   --   --   -- or leave it empty to use the default settings
-  --   --   --   -- refer to the configuration section below
-  --   --   -- })
-  --   -- end,
-  -- })
+  use("anuvyklack/hydra.nvim")
   -- git
   use("tpope/vim-fugitive")
-  use("antoinemadec/FixCursorHold.nvim")
+  -- use("antoinemadec/FixCursorHold.nvim")
   -- file trees
   use("kyazdani42/nvim-tree.lua")
   -- surround
@@ -148,7 +153,12 @@ require("packer").startup(function(use)
   -- Comment stuff out
   use("tpope/vim-commentary")
   -- Set root directory properly
-  use("ahmedkhalf/project.nvim")
+  use({
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup({})
+    end,
+  })
   -- Dev goodies
   use("tpope/vim-scriptease")
   -- Faster stuff lol
@@ -160,13 +170,23 @@ require("packer").startup(function(use)
     end,
   })
 
-  use('andweeb/presence.nvim')
   -- formatter
   use({
     "mhartington/formatter.nvim",
     config = function()
       require("formatter").setup({
         filetype = {
+          javascriptreact = {
+            -- prettier
+            function()
+              return {
+                exe = "prettier",
+                args = {
+                  vim.api.nvim_buf_get_name(0),
+                },
+              }
+            end,
+          },
           javascript = {
             -- prettier
             function()
@@ -175,7 +195,6 @@ require("packer").startup(function(use)
                 args = {
                   "--stdin-filepath",
                   vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-                  "--single-quote",
                 },
                 stdin = true,
               }
@@ -189,7 +208,6 @@ require("packer").startup(function(use)
                 args = {
                   "--stdin-filepath",
                   vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-                  "--single-quote",
                 },
                 stdin = true,
               }

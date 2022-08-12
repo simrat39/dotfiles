@@ -1,5 +1,5 @@
 local function comment()
-  require("ts_context_commentstring.internal").update_commentstring()
+  require("ts_context_commentstring.internal").update_commentstring({})
   local mode = vim.fn.mode()
   if mode == "n" then
     vim.fn.feedkeys("gcc")
