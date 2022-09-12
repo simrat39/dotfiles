@@ -24,8 +24,8 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.close(),
     ["<C-b>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping.select_next_item(cmp.SelectBehavior.Insert),
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp.SelectBehavior.Insert),
+    ["<Tab>"] = cmp.mapping.select_next_item({behaviour = cmp.SelectBehavior.Insert}),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item({behaviour = cmp.SelectBehavior.Insert}),
   },
   window = {
     completion = cmp.config.window.bordered(),

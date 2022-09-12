@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
 local setup_auto_format = require("utils.lsp").setup_auto_format
 local ih = require("inlay-hints")
 
@@ -7,6 +8,7 @@ setup_auto_format("rs")
 
 setup_auto_format("cpp")
 setup_auto_format("cc")
+setup_auto_format("c")
 setup_auto_format("h")
 
 setup_auto_format("js", "FormatWrite")
@@ -43,14 +45,28 @@ lspconfig.html.setup({
 })
 lspconfig.tailwindcss.setup({ capabilities = capabilities })
 lspconfig.svelte.setup({ capabilities = capabilities })
-lspconfig.emmet_ls.setup({
-  capabilities = capabilities,
-  filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
-})
 -----------------------
 -- Random others
 -----------------------
 lspconfig.clangd.setup({
+  cmd = {
+    -- see clangd --help-hidden
+    "clangd",
+    "--background-index",
+    -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
+    -- to add more checks, create .clang-tidy file in the root directory
+    -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
+    "--clang-tidy",
+    "--completion-style=bundled",
+    "--cross-file-rename",
+    "--header-insertion=iwyu",
+  },
+  init_options = {
+    clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+    usePlaceholders = true,
+    completeUnimported = true,
+    semanticHighlighting = true,
+  },
   capabilities = capabilities,
   on_attach = function(c, b)
     ih.on_attach(c, b)
@@ -143,3 +159,35 @@ require("lspconfig").gopls.setup({
 --     },
 --   },
 -- })
+
+if not configs.ls_emmet then
+  configs.ls_emmet = {
+    default_config = {
+      cmd = { "ls_emmet", "--stdio" },
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascriptreact",
+        "typescriptreact",
+        "haml",
+        "xml",
+        "xsl",
+        "pug",
+        "slim",
+        "sass",
+        "stylus",
+        "less",
+        "sss",
+        "hbs",
+        "handlebars",
+      },
+      root_dir = function()
+        return vim.loop.cwd()
+      end,
+      settings = {},
+    },
+  }
+end
+
+lspconfig.ls_emmet.setup({ capabilities = capabilities })

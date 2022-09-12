@@ -13,6 +13,7 @@ require("packer").startup(function(use)
       require("bufferline").setup({
         options = {
           separator_style = { "", "" },
+          bruh = false,
           tab_size = 22,
           enforce_regular_tabs = true,
           view = "multiwindow",
@@ -23,9 +24,17 @@ require("packer").startup(function(use)
     end,
   })
 
-  use({ "~/dev/symbols-outline.nvim", config = function()
-      require("symbols-outline").setup()
-  end })
+  use({
+    "~/dev/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup({
+        show_guides = true,
+        symbols = {
+          Function = { icon = "[]", hl = "TSFunction" },
+        },
+      })
+    end,
+  })
 
   use({
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -53,7 +62,7 @@ require("packer").startup(function(use)
 
   -- Dracula
   -- use({ "darker-dracula/vim", as = "dracula" })
-  use { "catppuccin/nvim", as = "catppuccin" }
+  use({ "catppuccin/nvim", as = "catppuccin" })
   -- Git in the gutter
   use("lewis6991/gitsigns.nvim")
   -- dev-icons
@@ -94,11 +103,11 @@ require("packer").startup(function(use)
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("null-ls").setup({
-        sources = {
-          require("null-ls").builtins.diagnostics.eslint,
-        },
-      })
+      -- require("null-ls").setup({
+      --   sources = {
+      --     require("null-ls").builtins.diagnostics.eslint,
+      --   },
+      -- })
     end,
   })
 
@@ -112,7 +121,7 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-nvim-lsp-signature-help")
 
   -- snips
-  use("L3MON4D3/LuaSnip")
+  use({ "L3MON4D3/LuaSnip", branch="snippet_text_edits" })
 
   -- tree-sitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -131,7 +140,7 @@ require("packer").startup(function(use)
   -- rust
   use("/home/simrat39/dev/rust-tools.nvim")
   use("/home/simrat39/dev/inlay-hints.nvim")
-  use"lvimuser/lsp-inlayhints.nvim"
+  use("lvimuser/lsp-inlayhints.nvim")
   -- Debugging
   use("mfussenegger/nvim-dap")
   use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
@@ -170,6 +179,37 @@ require("packer").startup(function(use)
     end,
   })
 
+  use("p00f/cphelper.nvim")
+  use({
+    "~/dev/hover.nvim",
+    config = function()
+      require("hover").setup({
+        init = function()
+          -- Require providers
+          require("sim_config.hover_actions")
+          -- require("hover.providers.lsp")
+          -- require("hover.providers.gh")
+          -- require("hover.providers.man")
+          -- require("hover.providers.dictionary")
+        end,
+        preview_opts = {
+          border = nil,
+        },
+        title = false,
+      })
+
+      -- Setup keymaps
+      vim.keymap.set("n", "K", require("hover").hover, {
+        desc = "hover.nvim",
+      })
+      vim.keymap.set(
+        "n",
+        "gK",
+        require("hover").hover_select,
+        { desc = "hover.nvim (select)" }
+      )
+    end,
+  })
   -- formatter
   use({
     "mhartington/formatter.nvim",

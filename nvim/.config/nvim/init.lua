@@ -37,3 +37,5 @@ require("catppuccin").setup({
   },
 })
 vim.cmd([[colorscheme catppuccin]])
+
+vim.g.cphlang = "javascript"
