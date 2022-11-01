@@ -14,13 +14,14 @@ local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 rt.setup({
   tools = {
     snippet_func = function(edits, bufnr, offset_encoding, old_func)
-      P(edits)
-      require("luasnip.extras.lsp").apply_text_edits(
-        edits,
-        bufnr,
-        offset_encoding,
-        old_func
-      )
+    old_func(edits, bufnr, offset_encoding);
+      -- P(edits)
+      -- require("luasnip.extras.lsp").apply_text_edits(
+      --   edits,
+      --   bufnr,
+      --   offset_encoding,
+      --   old_func
+      -- )
     end,
 
     inlay_hints = {
