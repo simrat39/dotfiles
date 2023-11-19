@@ -1,8 +1,8 @@
+require("plugins")
 require("impatient")
 require("globals")
 require("general")
 require("mappings")
-require("plugins")
 require("statusline")
 
 require("sim_config/compe")
@@ -20,11 +20,15 @@ require("sim_config/nvim-dap-ui")
 require("sim_config/nvim-tree")
 require("sim_config/nvim-ts-autotag")
 require("sim_config/rust-tools")
-require("sim_config/symbols-outline")
+-- require("sim_config/symbols-outline")
 require("sim_config/telescope")
 require("sim_config/tree-sitter")
 require("sim_config/typescript")
 require("sim_config/ui")
+
+vim.g.easy_align_delimiters = {
+  [";"] = { pattern = "=", left_margin = 10, right_margin = 1, stick_to_left = 0 },
+}
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({

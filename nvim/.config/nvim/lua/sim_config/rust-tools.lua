@@ -2,34 +2,27 @@
 -- Rust
 -----------------------
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local rt = require("rust-tools")
 
 local extension_path = vim.env.HOME
-  .. "/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/"
+  .. "/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/"
 local codelldb_path = extension_path .. "adapter/codelldb"
 local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 rt.setup({
   tools = {
-    snippet_func = function(edits, bufnr, offset_encoding, old_func)
-    old_func(edits, bufnr, offset_encoding);
-      -- P(edits)
-      -- require("luasnip.extras.lsp").apply_text_edits(
-      --   edits,
-      --   bufnr,
-      --   offset_encoding,
-      --   old_func
-      -- )
-    end,
+    hover_actions = {
+      auto_focus = true,
+    },
 
     inlay_hints = {
       auto = true,
-      only_current_line = true,
-      -- whether to show parameter hints with the inlay hints or not
-      -- default: true
-      show_parameter_hints = false,
+      max_len_align = true,
+
+      -- padding from the left if max_len_align is true
+      max_len_align_padding = 5,
     },
     on_initialized = function()
       -- ih.set_all()
@@ -52,12 +45,33 @@ rt.setup({
         { buffer = bufnr }
       )
     end,
+    settings = {
+      ["rust-analyzer"] = {
+    completion = {
+        snippets = {
+            custom = {
+                ["thread spawn"] = {
+                    prefix = { "spawn", "tspawn" },
+                    body = { "thread::spawn(move || {", "	$0", "});" },
+                    description = "Insert a thread::spawn call",
+                    requires = "std::thread",
+                    scope = "expr"
+                }
+            },
+        },
+    },
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
   },
   dap = {
-    adapter = require("rust-tools.dap").get_codelldb_adapter(
-      codelldb_path,
-      liblldb_path
-    ),
+    adapter = false,
+    -- adapter = require("rust-tools.dap").get_codelldb_adapter(
+    --   codelldb_path,
+    --   liblldb_path
+    -- ),
   },
 })
 

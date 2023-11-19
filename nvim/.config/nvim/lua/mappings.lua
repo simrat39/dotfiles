@@ -23,6 +23,10 @@ nnoremap("<M-k>", ":resize +2<CR>")
 nnoremap("<M-h>", ":vertical resize -2<CR>")
 nnoremap("<M-l>", ":vertical resize +2<CR>")
 
+-- vim easy align
+vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", {})
+vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", {})
+
 -- Escape redraws the screen and removes any search highlighting.
 nnoremap("<esc>", ":noh<return><esc>")
 

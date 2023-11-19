@@ -29,9 +29,6 @@ require("packer").startup(function(use)
     config = function()
       require("symbols-outline").setup({
         show_guides = true,
-        symbols = {
-          Function = { icon = "[]", hl = "TSFunction" },
-        },
       })
     end,
   })
@@ -121,7 +118,7 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-nvim-lsp-signature-help")
 
   -- snips
-  use({ "L3MON4D3/LuaSnip", branch="snippet_text_edits" })
+  use({ "L3MON4D3/LuaSnip", branch = "snippet_text_edits" })
 
   -- tree-sitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -139,8 +136,8 @@ require("packer").startup(function(use)
   use("jose-elias-alvarez/typescript.nvim")
   -- rust
   use("/home/simrat39/dev/rust-tools.nvim")
-  use("/home/simrat39/dev/inlay-hints.nvim")
-  use("lvimuser/lsp-inlayhints.nvim")
+  -- use("/home/simrat39/dev/inlay-hints.nvim")
+  -- use("lvimuser/lsp-inlayhints.nvim")
   -- Debugging
   use("mfussenegger/nvim-dap")
   use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
@@ -180,37 +177,38 @@ require("packer").startup(function(use)
   })
 
   use("p00f/cphelper.nvim")
-  use({
-    "~/dev/hover.nvim",
-    config = function()
-      require("hover").setup({
-        init = function()
-          -- Require providers
-          require("sim_config.hover_actions")
-          -- require("hover.providers.lsp")
-          -- require("hover.providers.gh")
-          -- require("hover.providers.man")
-          -- require("hover.providers.dictionary")
-        end,
-        preview_opts = {
-          border = nil,
-        },
-        title = false,
-      })
+  -- use({
+  --   "~/dev/hover.nvim",
+  --   config = function()
+  --     require("hover").setup({
+  --       init = function()
+  --         -- Require providers
+  --         require("sim_config.hover_actions")
+  --         -- require("hover.providers.lsp")
+  --         -- require("hover.providers.gh")
+  --         -- require("hover.providers.man")
+  --         -- require("hover.providers.dictionary")
+  --       end,
+  --       preview_opts = {
+  --         border = nil,
+  --       },
+  --       title = false,
+  --     })
 
-      -- Setup keymaps
-      vim.keymap.set("n", "K", require("hover").hover, {
-        desc = "hover.nvim",
-      })
-      vim.keymap.set(
-        "n",
-        "gK",
-        require("hover").hover_select,
-        { desc = "hover.nvim (select)" }
-      )
-    end,
-  })
+  --     -- Setup keymaps
+  --     vim.keymap.set("n", "K", require("hover").hover, {
+  --       desc = "hover.nvim",
+  --     })
+  --     vim.keymap.set(
+  --       "n",
+  --       "gK",
+  --       require("hover").hover_select,
+  --       { desc = "hover.nvim (select)" }
+  --     )
+  --   end,
+  -- })
   -- formatter
+  use("junegunn/vim-easy-align")
   use({
     "mhartington/formatter.nvim",
     config = function()

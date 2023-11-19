@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 local setup_auto_format = require("utils.lsp").setup_auto_format
-local ih = require("inlay-hints")
 
 setup_auto_format("dart")
 setup_auto_format("rs")
@@ -24,7 +23,7 @@ setup_auto_format("dart")
 setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -----------------------
 -- Webdev
@@ -48,6 +47,10 @@ lspconfig.svelte.setup({ capabilities = capabilities })
 -----------------------
 -- Random others
 -----------------------
+require("lspconfig").asm_lsp.setup({
+  capabilities = capabilities,
+})
+
 lspconfig.clangd.setup({
   cmd = {
     -- see clangd --help-hidden
@@ -69,25 +72,14 @@ lspconfig.clangd.setup({
   },
   capabilities = capabilities,
   on_attach = function(c, b)
-    ih.on_attach(c, b)
+    -- ih.on_attach(c, b)
   end,
 })
--- lspconfig.pylsp.setup({ capabilities = capabilities })
+
+lspconfig.pylsp.setup({ capabilities = capabilities })
+
 require("lspconfig").pyright.setup({
   capabilities = capabilities,
-  cmd = { "pyright-python-langserver", "--stdio" },
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "basic",
-        diagnosticMode = "workspace",
-        inlayHints = {
-          variableTypes = true,
-          functionReturnTypes = true,
-        },
-      },
-    },
-  },
 })
 require("lspconfig").yamlls.setup({
   capabilities = capabilities,
@@ -102,39 +94,20 @@ require("lspconfig").yamlls.setup({
 -----------------------
 -- Lua
 -----------------------
-local luadev = require("lua-dev").setup({
-  lspconfig = {
-    capabilities = capabilities,
-    cmd = { "lua-language-server" },
-    on_attach = function(c, b)
-      ih.on_attach(c, b)
-    end,
-    settings = {
-      Lua = {
-        hint = {
-          enable = true,
-        },
-      },
-    },
-  },
+require("neodev").setup()
+require("lspconfig").sumneko_lua.setup({
+  capabilities = capabilities,
+  cmd = { "lua-language-server" },
   settings = {
     Lua = {
-      workspace = {
-        library = {
-          ["/usr/share/nvim/runtime/lua"] = true,
-          ["/usr/share/nvim/runtime/lua/lsp"] = true,
-          ["/usr/share/awesome/lib"] = true,
-        },
+      hint = {
+        enable = true,
       },
     },
   },
 })
-require("lspconfig").sumneko_lua.setup(luadev)
 
 require("lspconfig").gopls.setup({
-  on_attach = function(c, b)
-    ih.on_attach(c, b)
-  end,
   settings = {
     gopls = {
       hints = {
@@ -149,16 +122,6 @@ require("lspconfig").gopls.setup({
     },
   },
 })
-
--- require("lspconfig").sumneko_lua.setup({
---   settings = {
---     Lua = {
---       hint = {
---         enable = true,
---       },
---     },
---   },
--- })
 
 if not configs.ls_emmet then
   configs.ls_emmet = {
@@ -191,3 +154,5 @@ if not configs.ls_emmet then
 end
 
 lspconfig.ls_emmet.setup({ capabilities = capabilities })
+
+lspconfig.sqlls.setup({ capabilities = capabilities })

@@ -1,5 +1,5 @@
 local function smartquit()
-  require("bufferline").handle_close(vim.api.nvim_get_current_buf())
+  _G.___bufferline_private.handle_close(vim.api.nvim_get_current_buf())
   -- local buf_nums = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 
   -- if buf_nums == 1 then

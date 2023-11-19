@@ -5,3 +5,5 @@ KDE_SESSION_VERSION="5"
 
 PATH=$HOME/.bin:/usr/local/bin:$HOME/.pub-cache/bin:$HOME/.local/bin:$PATH
 PATH="$PATH:$(yarn global bin)"
+PATH=$PATH:$HOME/.cargo/bin
+PATH=$PATH:/opt/flutter/bin
