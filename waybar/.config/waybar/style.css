@@ -1,0 +1,241 @@
+@import "mocha.css";
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces,
+#window,
+#pulseaudio,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    background-color: @surface0;
+    border-radius: 6px;
+}
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: @surface1;
+    box-shadow: inset 0 -3px @lavender;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+#mode {
+    box-shadow: inset 0 -3px @green;
+}
+
+#window {
+  color: @text;
+}
+
+#pulseaudio {
+    color: @flamingo;
+}
+
+#pulseaudio.muted {
+    color: @rosewater;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: @surface1;
+}
+
+
+#network {
+    color: @green;
+    padding-right: 15px;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+    color: @peach;
+}
+
+#cpu {
+    color: @lavender;
+    padding-right: 12px;
+}
+
+#memory {
+    color: @sky;
+    padding-right: 12px;
+}
+
+#backlight {
+    color: @text;
+}
+
+#battery {
+    color: @rosewater;
+}
+
+#battery.charging, #battery.plugged {
+    color: @green;
+}
+
+#clock {
+    color: @blue;
+}
+
+#disk {
+    color: #964B00;
+}
+
+#custom-media {
+    color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    color: #ffa000;
+}
+
+#temperature {
+    color: #f0932b;
+}
+
+#temperature.critical {
+    color: #eb4d4b;
+}
+
+#tray {
+    color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    color: #f53c3c;
+}
+
+#mpd.stopped {
+    color: #90b1b1;
+}
+
+#mpd.paused {
+    color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    color: #0069d4;
+}
