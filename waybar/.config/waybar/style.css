@@ -112,6 +112,7 @@ window#waybar {
 
 #battery {
     color: @rosewater;
+    padding-right: 15px;
 }
 
 #battery.charging, #battery.plugged {
